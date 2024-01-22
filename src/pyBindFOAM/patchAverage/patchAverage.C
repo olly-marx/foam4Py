@@ -1,14 +1,16 @@
 #include "patchAverage.H"
-#include "fvCFD.H"
+#include <vector>
 
-pyBindPatchAverage::pyBindPatchAverage(const word& fieldName, const word& patchName)
+using namespace pyBindFOAM;
+
+patchAverage::patchAverage(const word& fieldName, const word& patchName)
     : fieldName_(fieldName), patchName_(patchName) {}
 
-pyBindPatchAverage::~pyBindPatchAverage() {
-	Info << "pyBindPatchAverage destructor" << endl;
+patchAverage::~patchAverage() {
+	Info << "patchAverage destructor" << endl;
 }
 
-void pyBindPatchAverage::calculateAverages() {
+void patchAverage::calculateAverages() {
 	timeSelector::addOptions();
 	argList::validArgs.append("fieldName");
 	argList::validArgs.append("patchName");
@@ -81,3 +83,9 @@ void pyBindPatchAverage::calculateAverages() {
 	Info << "End" << endl;
 }
 
+void init_patchAverage(pybind11::module& m) {
+	pybind11::class_<pyBindFOAM::patchAverage> pa(m, "patchAverage");
+	
+	pa.def(pybind11::init<const word&, const word&>());
+	pa.def("calculateAverage", &pyBindFOAM::patchAverage::calculateAverages);
+}

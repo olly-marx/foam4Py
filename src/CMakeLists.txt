@@ -2,9 +2,15 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
+set(CMAKE_COMPILER g++)
 
 enable_language(CXX)
+
+# Check if MPI is set
+if(NOT DEFINED MPI)
+	set(MPI False)
+endif()
 
 if(MPI)
     set(MPI_ASSUME_NO_BUILTIN_MPI True)
@@ -16,22 +22,16 @@ endif()
 
 project(pyBindFOAM)
 
-set(CMAKE_PACKAGE_DIR "pyBindFOAM")
+set(CMAKE_PACKAGE_DIR "pyBindFOAMPackage")
 
 include_directories("./")
 
-## Specify the path to OpenFOAM installation
-#
-## Include directories for OpenFOAM
-#include_directories(
-#    ${FOAM_ROOT_DIR}/src/finiteVolume/lnInclude
-#    ${FOAM_ROOT_DIR}/src/meshTools/lnInclude
-#    ${FOAM_ROOT_DIR}/src/sampling/lnInclude
-#    ${FOAM_ROOT_DIR}/src/foam/lnInclude
-#    ${FOAM_ROOT_DIR}/src/mesh/lnInclude
-#    # Add any other required include directories
-#)
-#
+#set(CMAKE_INSTALL_PREFIX "..")
+
+# Check if CMAKE_PYTHON_BINDINGS is set
+if(NOT DEFINED CMAKE_PYTHON_BINDINGS)
+	set(CMAKE_PYTHON_BINDINGS True)
+endif()
 
 if(CMAKE_PYTHON_BINDINGS)
 

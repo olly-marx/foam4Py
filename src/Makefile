@@ -57,18 +57,18 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,19 +162,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named foamBindMods
-
-# Build rule for target.
-foamBindMods: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 foamBindMods
-.PHONY : foamBindMods
-
-# fast build rule for target.
-foamBindMods/fast:
-	$(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/foamBindMods.dir/build.make pyBindFOAM/CMakeFiles/foamBindMods.dir/build
-.PHONY : foamBindMods/fast
-
-#=============================================================================
 # Target rules for targets named pyBindFOAM
 
 # Build rule for target.
@@ -186,6 +173,32 @@ pyBindFOAM: cmake_check_build_system
 pyBindFOAM/fast:
 	$(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build
 .PHONY : pyBindFOAM/fast
+
+#=============================================================================
+# Target rules for targets named ImportMessage
+
+# Build rule for target.
+ImportMessage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ImportMessage
+.PHONY : ImportMessage
+
+# fast build rule for target.
+ImportMessage/fast:
+	$(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/ImportMessage.dir/build.make pyBindFOAM/CMakeFiles/ImportMessage.dir/build
+.PHONY : ImportMessage/fast
+
+#=============================================================================
+# Target rules for targets named pyBindFOAMMods
+
+# Build rule for target.
+pyBindFOAMMods: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAMMods
+.PHONY : pyBindFOAMMods
+
+# fast build rule for target.
+pyBindFOAMMods/fast:
+	$(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build
+.PHONY : pyBindFOAMMods/fast
 
 #=============================================================================
 # Target rules for targets named patchAverage
@@ -212,9 +225,10 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... foamBindMods"
+	@echo "... ImportMessage"
 	@echo "... patchAverage"
 	@echo "... pyBindFOAM"
+	@echo "... pyBindFOAMMods"
 .PHONY : help
 
 

@@ -1,0 +1,3 @@
+/home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/../lib/libpyBindFOAM.so
+/home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/../lib/pyBindFOAMMods.cpython-311-x86_64-linux-gnu.so
+/home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/../include/pyBindFOAM/patchAverage/patchAverage/patchAverage.H

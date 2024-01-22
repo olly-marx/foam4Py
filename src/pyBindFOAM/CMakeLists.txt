@@ -1,59 +1,55 @@
-add_subdirectory(patchAverage)
-
-add_library(foamBindMods SHARED
+add_library(pyBindFOAM SHARED
     $<TARGET_OBJECTS:patchAverage>
     )
 
-# Link against the python library
-target_link_libraries(foamBindMods ${Python_LIBRARIES})
-
-if(FOAM)
-    set(FOAM_ROOT_DIR /home/ojm40/foam/foam-extend-5.0)
-
-    # Set the FOAM_LIBBIN variable to the location of the OpenFOAM libraries
-    set(FOAM_LIBBIN ${FOAM_ROOT_DIR}/lib/linux64GccDPInt32Opt)
-
-    add_library(foam STATIC IMPORTED)
-    set_target_properties(foam PROPERTIES IMPORTED_LOCATION ${FOAM_LIBBIN}/libfiniteVolume.so)
-
-    # print out the location of the imported library
-    message("Linking to OpenFOAM libraries: ${FOAM_LIBBIN}")
-
-    # Now link the imported library to your executable
-    target_link_libraries(foamBindMods foam)
+# Check in FOAM is set if not set it to TRUE
+if(NOT DEFINED FOAM)
+	set(FOAM True)
 endif()
 
+if(FOAM)
+    include(../FOAMConfig.cmake)
+endif()
+
+# Link finiteVolume library
+#target_link_libraries(pyBindFOAM finiteVolume)
+
+# Link against the python library
+target_link_libraries(pyBindFOAM ${Python_LIBRARIES})
+
+add_subdirectory(patchAverage)
+
 if(CMAKE_PYTHON_BINDINGS)
-    pybind11_add_module(pyBindFOAM SHARED pyBindFOAM.C)
+    pybind11_add_module(pyBindFOAMMods SHARED pyBindFOAMMods.C)
 
-    set_target_properties(pyBindFOAM PROPERTIES SKIP_BUILD_RPATH FALSE)
+    set_target_properties(pyBindFOAMMods PROPERTIES SKIP_BUILD_RPATH FALSE)
 
-    set_target_properties(pyBindFOAM PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
+    set_target_properties(pyBindFOAMMods PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
 
-    target_link_libraries(pyBindFOAM PRIVATE foamBindMods)
+    target_link_libraries(pyBindFOAMMods PRIVATE pyBindFOAM)
 
-    set_target_properties(pyBindFOAM PROPERTIES INSTALL_RPATH "$ORIGIN/lib")
+    set_target_properties(pyBindFOAMMods PROPERTIES INSTALL_RPATH "$ORIGIN/lib")
 
-    set_target_properties(pyBindFOAM PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+    set_target_properties(pyBindFOAMMods PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 endif()
 
 # Install the foamBindMods library
-install(TARGETS foamBindMods 
-    LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}/lib
-    ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}/lib
-    RUNTIME DESTINATION ${CMAKE_PACKAGE_DIR}/bin
-    INCLUDES DESTINATION ${CMAKE_PACKAGE_DIR}/include
+install(TARGETS pyBindFOAM 
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include
     )
 
 # Define the location of the header files, for doc generation
-set(FOAM_BIND_MODS_INCLUDE_DIR ${CMAKE_PACKAGE_DIR}/include)
+set(FOAM_BIND_MODS_INCLUDE_DIR include)
 message("FOAM_BIND_MODS_INCLUDE_DIR: ${FOAM_BIND_MODS_INCLUDE_DIR}")
 
 if(CMAKE_PYTHON_BINDINGS)
-    # Install the pyBindFOAM library
-    install(TARGETS pyBindFOAM 
-	LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}
-	ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}
+    # Install the pyBindFOAMMods library
+    install(TARGETS pyBindFOAMMods 
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
 	#RUNTIME DESTINATION ${CMAKE_PACKAGE_DIR}/bin
 	#INCLUDES DESTINATION ${CMAKE_PACKAGE_DIR}/include
 	)

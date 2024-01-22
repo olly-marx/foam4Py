@@ -12,7 +12,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 import re
-VERSIONFILE="byBindFOAM/_version.py"
+VERSIONFILE="pyBindFOAMPackage/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -35,10 +35,12 @@ setup(
     version=verstr,
     cmake_source_dir='src/',
     include_package_data=True,
+    packages=['pyBindFOAM'],
+    package_dir={'pyBindFOAM': 'pyBindFOAM'},
     cmake_args=[
-        '-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9',
         '-DCMAKE_PYTHON_BINDINGS={}'.format(pybind_value),
         '-DFOAM:BOOL={}'.format('ON'),
+        #'-DCMAKE_BUILD_TYPE={}'.format('Release'),
         # '-DMPI_CXX_COMPILER={}'.format(mpicxx),
         # '-DMPI_C_COMPILER={}'.format(mpicc),
         #'-DMPI:BOOL={}'.format(mpi_value),

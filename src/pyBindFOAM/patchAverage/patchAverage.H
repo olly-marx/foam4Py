@@ -3,18 +3,25 @@
 
 #include "fvCFD.H"
 
-class pyBindPatchAverage {
-public:
-    pyBindPatchAverage(const word& fieldName, const word& patchName);
+namespace pyBindFOAM{
+    
+    class patchAverage {
+    public:
+	patchAverage(const word& fieldName, const word& patchName);
 
-    ~pyBindPatchAverage();
+	~patchAverage();
 
-    void calculateAverages();
+	void calculateAverages();
 
-private:
-    word& fieldName_;
-    word& patchName_;
-};
+    private:
+	const word& fieldName_;
+	const word& patchName_;
+    };
+
+}
+
+#include <pybind11/pybind11.h>
+__attribute__((visibility("default"))) void init_patchAverage(pybind11::module m);
 
 #endif // PATCH_AVERAGER_H
 

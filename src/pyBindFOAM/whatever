@@ -1,0 +1,393 @@
+000000000001d500 b completed.0
+                 U __cxa_allocate_exception@CXXABI_1.3
+                 U __cxa_atexit@GLIBC_2.2.5
+                 U __cxa_begin_catch@CXXABI_1.3
+                 U __cxa_demangle@CXXABI_1.3
+                 U __cxa_end_catch@CXXABI_1.3
+                 w __cxa_finalize@GLIBC_2.2.5
+                 U __cxa_free_exception@CXXABI_1.3
+                 U __cxa_guard_abort@CXXABI_1.3
+                 U __cxa_guard_acquire@CXXABI_1.3
+                 U __cxa_guard_release@CXXABI_1.3
+                 w __cxa_pure_virtual@CXXABI_1.3
+                 U __cxa_rethrow@CXXABI_1.3
+                 U __cxa_throw@CXXABI_1.3
+0000000000008bf0 t deregister_tm_clones
+0000000000008c60 t __do_global_dtors_aux
+000000000001cad8 d __do_global_dtors_aux_fini_array_entry
+000000000001d480 d __dso_handle
+000000000001d4f0 d DW.ref.__gcc_personality_v0
+000000000001d4f8 d DW.ref.__gxx_personality_v0
+000000000001d488 d DW.ref._ZTIN10__cxxabiv115__forced_unwindE
+000000000001d490 d DW.ref._ZTIN8pybind1117builtin_exceptionE
+000000000001d498 d DW.ref._ZTIN8pybind1117error_already_setE
+000000000001d4a8 d DW.ref._ZTISt11range_error
+000000000001d4b0 d DW.ref._ZTISt12domain_error
+000000000001d4b8 d DW.ref._ZTISt12length_error
+000000000001d4c0 d DW.ref._ZTISt12out_of_range
+000000000001d4c8 d DW.ref._ZTISt14overflow_error
+000000000001d4d0 d DW.ref._ZTISt16invalid_argument
+000000000001d4d8 d DW.ref._ZTISt16nested_exception
+000000000001d4e0 d DW.ref._ZTISt9bad_alloc
+000000000001d4e8 d DW.ref._ZTISt9exception
+000000000001cca8 d _DYNAMIC
+                 U __dynamic_cast@CXXABI_1.3
+0000000000017168 t _fini
+0000000000008ca0 t frame_dummy
+000000000001cac8 d __frame_dummy_init_array_entry
+000000000001b184 r __FRAME_END__
+                 U free@GLIBC_2.2.5
+                 U __gcc_personality_v0@GCC_3.3.1
+000000000001cfe8 d _GLOBAL_OFFSET_TABLE_
+0000000000008b40 t _GLOBAL__sub_I_pyBindFOAMMods.C
+                 w __gmon_start__
+00000000000195b8 r __GNU_EH_FRAME_HDR
+                 U __gxx_personality_v0@CXXABI_1.3
+0000000000005000 t _init
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 U __libc_single_threaded@GLIBC_2.32
+                 U memcmp@GLIBC_2.2.5
+                 U memcpy@GLIBC_2.14
+                 U memmove@GLIBC_2.2.5
+                 U memset@GLIBC_2.2.5
+                 U PyBaseObject_Type
+000000000000d6e0 t pybind11_meta_call
+0000000000007551 t pybind11_meta_call.cold
+000000000000f4b0 t pybind11_meta_dealloc
+0000000000009100 t pybind11_meta_getattro
+000000000000cab0 t pybind11_meta_setattro
+000000000000dce0 t pybind11_object_dealloc
+00000000000075ba t pybind11_object_dealloc.cold
+0000000000008eb0 t pybind11_object_init
+000000000000626e t pybind11_object_init.cold
+000000000000dcc0 t pybind11_object_new
+0000000000008cb0 t pybind11_static_get
+0000000000008cd0 t pybind11_static_set
+0000000000052b06 N pyBindFOAMMods.C.a03be99c
+                 U PyByteArray_AsString
+                 U PyByteArray_Size
+                 U PyByteArray_Type
+                 U PyBytes_AsString
+                 U PyBytes_AsStringAndSize
+                 U PyBytes_Size
+                 U PyCapsule_GetContext
+                 U PyCapsule_GetName
+                 U PyCapsule_GetPointer
+                 U PyCapsule_New
+                 U PyCapsule_SetContext
+                 U PyCapsule_SetPointer
+                 U PyCapsule_Type
+                 U PyCFunction_Type
+                 U PyCMethod_New
+                 U _Py_Dealloc
+                 U PyDict_Copy
+                 U PyDict_DelItemString
+                 U PyDict_GetItemWithError
+                 U PyDict_New
+                 U PyDict_Next
+                 U PyDict_Size
+                 U PyDict_Type
+                 U PyErr_Clear
+                 U PyErr_Fetch
+                 U PyErr_Format
+                 U PyErr_NormalizeException
+                 U PyErr_Occurred
+                 U PyErr_Restore
+                 U PyErr_SetString
+                 U PyErr_WriteUnraisable
+                 U PyEval_AcquireThread
+                 U PyEval_GetBuiltins
+                 U PyEval_SaveThread
+                 U PyException_SetCause
+                 U PyException_SetContext
+                 U PyException_SetTraceback
+                 U PyExc_ImportError
+                 U PyExc_IndexError
+                 U PyExc_MemoryError
+                 U PyExc_OverflowError
+                 U PyExc_RuntimeError
+                 U PyExc_SystemError
+                 U PyExc_TypeError
+                 U PyExc_ValueError
+                 U PyFrame_GetBack
+                 U PyFrame_GetCode
+                 U PyFrame_GetLineNumber
+                 U Py_GetVersion
+                 U PyGILState_Ensure
+                 U PyGILState_GetThisThreadState
+                 U PyGILState_Release
+0000000000012740 T PyInit_pyBindFOAMMods
+00000000000081e2 t PyInit_pyBindFOAMMods.cold
+                 U PyInstanceMethod_New
+                 U PyInstanceMethod_Type
+                 U PyList_Size
+                 U PyMem_Calloc
+                 U PyMem_Free
+                 U PyModule_Create2
+                 U _Py_NoneStruct
+                 U _Py_NotImplementedStruct
+                 U PyObject_CallFunctionObjArgs
+                 U PyObject_CallObject
+                 U PyObject_ClearWeakRefs
+                 U PyObject_GC_UnTrack
+                 U PyObject_GetAttrString
+                 U _PyObject_GetDictPtr
+                 U PyObject_HasAttrString
+                 U PyObject_IsInstance
+                 U PyObject_Repr
+                 U PyObject_SetAttrString
+                 U PyObject_SetItem
+                 U PyObject_Str
+                 U PyProperty_Type
+                 U PyThreadState_Clear
+                 U PyThreadState_DeleteCurrent
+                 U PyThreadState_Get
+                 U PyThreadState_New
+                 U _PyThreadState_UncheckedGet
+                 U PyThread_tss_alloc
+                 U PyThread_tss_create
+                 U PyThread_tss_get
+                 U PyThread_tss_set
+                 U PyTuple_GetItem
+                 U PyTuple_New
+                 U PyTuple_SetItem
+                 U PyTuple_Size
+                 U PyType_IsSubtype
+                 U _PyType_Lookup
+                 U PyType_Ready
+                 U PyType_Type
+                 U PyUnicode_AsEncodedString
+                 U PyUnicode_AsUTF8AndSize
+                 U PyUnicode_AsUTF8String
+                 U PyUnicode_DecodeUTF8
+                 U PyUnicode_FromString
+                 U PyWeakref_NewRef
+0000000000008c20 t register_tm_clones
+                 U __stack_chk_fail@GLIBC_2.4
+                 U strchr@GLIBC_2.2.5
+                 U strcmp@GLIBC_2.2.5
+                 U strdup@GLIBC_2.2.5
+                 U strlen@GLIBC_2.2.5
+                 U strncmp@GLIBC_2.2.5
+000000000001d500 d __TMC_END__
+                 U _Unwind_Resume@GCC_3.0
+                 U init_patchAverage(pybind11::module_)
+                 U operator delete[](void*)@GLIBCXX_3.4
+                 U operator delete(void*)@GLIBCXX_3.4
+000000000001d530 b guard variable for Foam::List<Foam::List<double> >::zero
+000000000001d550 b guard variable for Foam::List<Foam::List<int> >::zero
+000000000001d5d0 b guard variable for pybind11::detail::get_local_internals()::locals
+000000000001d560 b pybind11_module_def_pyBindFOAMMods
+000000000001d520 b Foam::List<Foam::List<double> >::zero
+00000000000097f0 t Foam::List<Foam::List<double> >::~List()
+00000000000097f0 t Foam::List<Foam::List<double> >::~List()
+000000000001d540 b Foam::List<Foam::List<int> >::zero
+0000000000009790 t Foam::List<Foam::List<int> >::~List()
+0000000000009790 t Foam::List<Foam::List<int> >::~List()
+0000000000009770 t pybind11::cast_error::~cast_error()
+0000000000009750 t pybind11::cast_error::~cast_error() [clone .lto_priv.0]
+0000000000009750 t pybind11::cast_error::~cast_error() [clone .lto_priv.0]
+000000000000c050 t pybind11::raise_from(_object*, char const*)
+000000000000f950 t pybind11::cpp_function::dispatcher(_object*, _object*, _object*)
+00000000000077bb t pybind11::cpp_function::dispatcher(_object*, _object*, _object*) [clone .cold]
+0000000000014d40 t pybind11::cpp_function::initialize_generic(std::unique_ptr<pybind11::detail::function_record, pybind11::cpp_function::InitializingFunctionRecordDeleter>&&, char const*, std::type_info const* const*, unsigned long) [clone .constprop.0]
+00000000000085f2 t pybind11::cpp_function::initialize_generic(std::unique_ptr<pybind11::detail::function_record, pybind11::cpp_function::InitializingFunctionRecordDeleter>&&, char const*, std::type_info const* const*, unsigned long) [clone .constprop.0] [clone .cold]
+00000000000133d0 t pybind11::cpp_function::make_function_record() [clone .constprop.0]
+0000000000006425 t pybind11::pybind11_fail(char const*)
+0000000000006474 t pybind11::pybind11_fail(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000000cd90 t pybind11::error_already_set::m_fetched_error_deleter(pybind11::detail::error_fetch_and_normalize*)
+0000000000007136 t pybind11::error_already_set::m_fetched_error_deleter(pybind11::detail::error_fetch_and_normalize*) [clone .cold]
+000000000000ce90 t pybind11::error_already_set::error_already_set()
+000000000000ce90 t pybind11::error_already_set::error_already_set() [clone .lto_priv.0]
+0000000000007146 t pybind11::error_already_set::error_already_set() [clone .lto_priv.0] [clone .cold]
+0000000000009660 t pybind11::error_already_set::~error_already_set()
+0000000000009580 t pybind11::error_already_set::~error_already_set() [clone .lto_priv.0]
+0000000000009580 t pybind11::error_already_set::~error_already_set() [clone .lto_priv.0]
+000000000000cd20 t pybind11::gil_scoped_acquire::dec_ref()
+000000000000cc60 t pybind11::gil_scoped_acquire::gil_scoped_acquire()
+000000000000cc60 t pybind11::gil_scoped_acquire::gil_scoped_acquire()
+000000000000cd70 t pybind11::gil_scoped_acquire::~gil_scoped_acquire()
+000000000000cd70 t pybind11::gil_scoped_acquire::~gil_scoped_acquire()
+0000000000007266 t pybind11::str::str(pybind11::handle)
+000000000000cfa0 t pybind11::str::str(char const*)
+0000000000007266 t pybind11::str::str(pybind11::handle) [clone .lto_priv.0]
+000000000000cfa0 t pybind11::str::str(char const*)
+0000000000007206 t pybind11::str::str(char const*) [clone .cold]
+0000000000012c80 t std::enable_if<(!std::is_base_of<pybind11::detail::pyobject_tag, std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type>::value)&&pybind11::detail::move_if_unreferenced<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>::value, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type pybind11::cast<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(pybind11::object&&)
+00000000000083a1 t std::enable_if<(!std::is_base_of<pybind11::detail::pyobject_tag, std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type>::value)&&pybind11::detail::move_if_unreferenced<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>::value, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type pybind11::cast<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(pybind11::object&&) [clone .cold]
+000000000000bd00 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > pybind11::cast<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, 0>(pybind11::handle const&)
+0000000000006dbc t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > pybind11::cast<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, 0>(pybind11::handle const&) [clone .cold]
+0000000000009cc0 t pybind11::detail::error_string[abi:cxx11]()
+00000000000065aa t pybind11::detail::error_string[abi:cxx11]() [clone .cold]
+000000000000d270 t pybind11::detail::all_type_info(_typeobject*)
+0000000000007409 t pybind11::detail::all_type_info(_typeobject*) [clone .cold]
+0000000000012570 t pybind11::detail::clean_type_id(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+0000000000008181 t pybind11::detail::clean_type_id(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [clone .cold]
+0000000000008d60 t pybind11::detail::function_call::~function_call()
+0000000000008d60 t pybind11::detail::function_call::~function_call()
+000000000000c1a0 t pybind11::detail::get_internals()
+0000000000006dcc t pybind11::detail::get_internals() [clone .cold]
+000000000000d920 t pybind11::detail::get_type_info(_typeobject*)
+0000000000007561 t pybind11::detail::get_type_info(_typeobject*) [clone .cold]
+0000000000012fd0 t pybind11::detail::get_type_info(std::type_index const&, bool) [clone .constprop.0]
+000000000000cf30 t pybind11::detail::dict_getitemstring(_object*, char const*)
+0000000000007182 t pybind11::detail::dict_getitemstring(_object*, char const*) [clone .cold]
+000000000000ef90 t pybind11::detail::get_local_internals()
+000000000000762f t pybind11::detail::get_local_internals() [clone .cold]
+0000000000007718 t pybind11::detail::loader_life_support::~loader_life_support()
+0000000000007718 t pybind11::detail::loader_life_support::~loader_life_support()
+000000000000bc90 t pybind11::detail::translate_exception(std::__exception_ptr::exception_ptr)
+00000000000068f8 t pybind11::detail::translate_exception(std::__exception_ptr::exception_ptr) [clone .cold]
+000000000000d960 t pybind11::detail::traverse_offset_bases(void*, pybind11::detail::type_info const*, pybind11::detail::instance*, bool (*)(void*, pybind11::detail::instance*)) [clone .constprop.0]
+000000000000756d t pybind11::detail::traverse_offset_bases(void*, pybind11::detail::type_info const*, pybind11::detail::instance*, bool (*)(void*, pybind11::detail::instance*)) [clone .constprop.0] [clone .cold]
+0000000000014290 t pybind11::detail::all_type_info_populate(_typeobject*, std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> >&) [clone .isra.0]
+00000000000083c2 t pybind11::detail::all_type_info_populate(_typeobject*, std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> >&) [clone .isra.0] [clone .cold]
+00000000000083ef t bool pybind11::detail::handle_nested_exception<std::nested_exception, 0>(std::nested_exception const&, std::__exception_ptr::exception_ptr const&) [clone .isra.0]
+000000000000cb40 t pybind11::detail::deregister_instance_impl(void*, pybind11::detail::instance*)
+000000000000674a t pybind11::detail::error_fetch_and_normalize::restore()
+0000000000009850 t pybind11::detail::error_fetch_and_normalize::error_fetch_and_normalize(char const*)
+0000000000009850 t pybind11::detail::error_fetch_and_normalize::error_fetch_and_normalize(char const*)
+00000000000064c4 t pybind11::detail::error_fetch_and_normalize::error_fetch_and_normalize(char const*) [clone .cold]
+00000000000062e2 t pybind11::detail::apply_exception_translators(std::forward_list<void (*)(std::__exception_ptr::exception_ptr), std::allocator<void (*)(std::__exception_ptr::exception_ptr)> >&)
+000000000000db60 t pybind11::detail::instance::allocate_layout()
+0000000000007580 t pybind11::detail::instance::allocate_layout() [clone .cold]
+00000000000093e0 t pybind11::detail::instance::deallocate_layout()
+000000000000eb40 t pybind11::detail::instance::get_value_and_holder(pybind11::detail::type_info const*, bool) [clone .constprop.0]
+00000000000148e0 t pybind11::detail::type_caster<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>& pybind11::detail::load_type<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>(pybind11::detail::type_caster<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>&, pybind11::handle const&) [clone .isra.0]
+00000000000084eb t pybind11::detail::type_caster<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>& pybind11::detail::load_type<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>(pybind11::detail::type_caster<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, void>&, pybind11::handle const&) [clone .isra.0] [clone .cold]
+00000000000084be t pybind11::detail::raise_err(_object*, char const*) [clone .isra.0]
+0000000000008d30 t pybind11::cast_error::set_error() const
+000000000000ec60 t pybind11::error_already_set::what() const
+0000000000007618 t pybind11::error_already_set::what() const [clone .cold]
+000000000000cfe0 t pybind11::str::operator std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >() const
+00000000000072da t pybind11::str::operator std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >() const [clone .cold]
+0000000000009fc0 t pybind11::detail::error_fetch_and_normalize::format_value_and_trace[abi:cxx11]() const
+0000000000006618 t pybind11::detail::error_fetch_and_normalize::format_value_and_trace[abi:cxx11]() const [clone .cold]
+00000000000126f0 t pybind11::detail::accessor<pybind11::detail::accessor_policies::str_attr>::get_cache() const
+00000000000081a0 t pybind11::detail::accessor<pybind11::detail::accessor_policies::str_attr>::get_cache() const [clone .cold]
+00000000000131b0 t pybind11::handle::dec_ref() const & [clone .isra.0]
+00000000000132b0 t std::_Hashtable<std::type_index, std::pair<std::type_index const, pybind11::detail::type_info*>, std::allocator<std::pair<std::type_index const, pybind11::detail::type_info*> >, std::__detail::_Select1st, std::equal_to<std::type_index>, std::hash<std::type_index>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_find_before_node(unsigned long, std::type_index const&, unsigned long) const [clone .constprop.0]
+                 U std::runtime_error::what() const@GLIBCXX_3.4
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::find_last_not_of(char const*, unsigned long, unsigned long) const@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::find_first_not_of(char const*, unsigned long, unsigned long) const@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::find(char, unsigned long) const@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::find(char const*, unsigned long, unsigned long) const@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::rfind(char const*, unsigned long, unsigned long) const@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const@GLIBCXX_3.4.21
+                 U std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const@GLIBCXX_3.4.18
+00000000000133a0 t std::type_info::hash_code() const [clone .isra.0]
+0000000000013680 t std::_Hashtable<_typeobject*, std::pair<_typeobject* const, std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> > >, std::allocator<std::pair<_typeobject* const, std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> > > >, std::__detail::_Select1st, std::equal_to<_typeobject*>, std::hash<_typeobject*>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_erase(std::integral_constant<bool, true>, _typeobject* const&) [clone .constprop.0] [clone .isra.0]
+0000000000006290 t std::_Hashtable<_object*, _object*, std::allocator<_object*>, std::__detail::_Identity, std::equal_to<_object*>, std::hash<_object*>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::~_Hashtable()
+0000000000006290 t std::_Hashtable<_object*, _object*, std::allocator<_object*>, std::__detail::_Identity, std::equal_to<_object*>, std::hash<_object*>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::~_Hashtable()
+0000000000014820 t std::_Hashtable<void const*, std::pair<void const* const, pybind11::detail::instance*>, std::allocator<std::pair<void const* const, pybind11::detail::instance*> >, std::__detail::_Select1st, std::equal_to<void const*>, std::hash<void const*>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, false> >::erase(std::__detail::_Node_const_iterator<std::pair<void const* const, pybind11::detail::instance*>, false, false>) [clone .isra.0]
+0000000000012bb0 t std::_Hashtable<std::type_index, std::pair<std::type_index const, pybind11::detail::type_info*>, std::allocator<std::pair<std::type_index const, pybind11::detail::type_info*> >, std::__detail::_Select1st, std::equal_to<std::type_index>, std::hash<std::type_index>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::find(std::type_index const&)
+0000000000013440 t std::_Hashtable<std::type_index, std::pair<std::type_index const, pybind11::detail::type_info*>, std::allocator<std::pair<std::type_index const, pybind11::detail::type_info*> >, std::__detail::_Select1st, std::equal_to<std::type_index>, std::hash<std::type_index>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_erase(std::integral_constant<bool, true>, std::type_index const&) [clone .constprop.0] [clone .isra.0]
+0000000000008de0 t std::_Hashtable<std::pair<_object const*, char const*>, std::pair<_object const*, char const*>, std::allocator<std::pair<_object const*, char const*> >, std::__detail::_Identity, std::equal_to<std::pair<_object const*, char const*> >, pybind11::detail::override_hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, true, true> >::erase(std::__detail::_Node_const_iterator<std::pair<_object const*, char const*>, true, true>)
+0000000000006240 t std::_Bvector_base<std::allocator<bool> >::_M_deallocate()
+                 U std::runtime_error::runtime_error(char const*)@GLIBCXX_3.4.21
+                 U std::runtime_error::runtime_error(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)@GLIBCXX_3.4.21
+                 U std::runtime_error::runtime_error(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)@GLIBCXX_3.4.21
+                 U std::runtime_error::~runtime_error()@GLIBCXX_3.4
+                 U std::runtime_error::~runtime_error()@GLIBCXX_3.4
+                 U std::__exception_ptr::exception_ptr::_M_release()@CXXABI_1.3.13
+                 U std::__exception_ptr::exception_ptr::_M_addref()@CXXABI_1.3.13
+0000000000009440 t std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release_last_use_cold()
+0000000000008dd0 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_destroy()
+0000000000008d00 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_dispose()
+0000000000009400 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_get_deleter(std::type_info const&)
+0000000000008ea0 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+0000000000008d20 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+0000000000008d20 t std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+0000000000013ee0 t std::vector<bool, std::allocator<bool> >::_M_insert_aux(std::_Bit_iterator, bool) [clone .isra.0]
+0000000000013800 t std::vector<bool, std::allocator<bool> >::_M_fill_insert(std::_Bit_iterator, unsigned long, bool) [clone .constprop.0] [clone .isra.0]
+0000000000009160 t void std::vector<pybind11::handle, std::allocator<pybind11::handle> >::_M_realloc_insert<pybind11::handle const&>(__gnu_cxx::__normal_iterator<pybind11::handle*, std::vector<pybind11::handle, std::allocator<pybind11::handle> > >, pybind11::handle const&)
+0000000000009160 t void std::vector<pybind11::handle, std::allocator<pybind11::handle> >::_M_realloc_insert<pybind11::handle>(__gnu_cxx::__normal_iterator<pybind11::handle*, std::vector<pybind11::handle, std::allocator<pybind11::handle> > >, pybind11::handle&&)
+0000000000012e40 t void std::vector<_typeobject*, std::allocator<_typeobject*> >::_M_realloc_insert<_typeobject*>(__gnu_cxx::__normal_iterator<_typeobject**, std::vector<_typeobject*, std::allocator<_typeobject*> > >, _typeobject*&&)
+0000000000013020 t void std::vector<char*, std::allocator<char*> >::_M_realloc_insert<char* const&>(__gnu_cxx::__normal_iterator<char**, std::vector<char*, std::allocator<char*> > >, char* const&) [clone .constprop.0]
+0000000000012a20 t void std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> >::_M_realloc_insert<pybind11::detail::type_info* const&>(__gnu_cxx::__normal_iterator<pybind11::detail::type_info**, std::vector<pybind11::detail::type_info*, std::allocator<pybind11::detail::type_info*> > >, pybind11::detail::type_info* const&)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct(unsigned long, char)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::insert(unsigned long, char const*)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_erase(unsigned long, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long)@GLIBCXX_3.4.21
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::push_back(char)@GLIBCXX_3.4.21
+0000000000014750 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::operator=(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [clone .isra.0]
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)@GLIBCXX_3.4.21
+00000000000131d0 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) [clone .constprop.0]
+                 U std::ios_base::Init::Init()@GLIBCXX_3.4
+                 U std::ios_base::Init::~Init()@GLIBCXX_3.4
+                 U std::bad_alloc::~bad_alloc()@GLIBCXX_3.4
+                 U std::exception::~exception()@GLIBCXX_3.4
+                 U operator new(unsigned long)@GLIBCXX_3.4
+                 U std::_Hash_bytes(void const*, unsigned long, unsigned long)@CXXABI_1.3.5
+                 U std::current_exception()@CXXABI_1.3.3
+                 U std::rethrow_exception(std::__exception_ptr::exception_ptr)@CXXABI_1.3.3
+                 U std::__throw_bad_alloc()@GLIBCXX_3.4
+                 U std::__throw_logic_error(char const*)@GLIBCXX_3.4
+                 U std::__throw_length_error(char const*)@GLIBCXX_3.4
+                 U std::__throw_out_of_range_fmt(char const*, ...)@GLIBCXX_3.4.20
+                 U std::__throw_bad_array_new_length()@GLIBCXX_3.4.29
+                 U std::terminate()@GLIBCXX_3.4
+000000000001d558 b std::__ioinit
+000000000000be40 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+00000000000094c0 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+0000000000006415 t std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [clone .cold]
+                 U typeinfo for __cxxabiv1::__forced_unwind@CXXABI_1.3.2
+000000000001cc48 d typeinfo for pybind11::cast_error
+000000000001cc78 d typeinfo for pybind11::builtin_exception
+000000000001cc90 d typeinfo for pybind11::error_already_set
+000000000001cc60 d typeinfo for pybind11::reference_cast_error
+000000000001cb60 d typeinfo for pybind11::detail::object_api<pybind11::handle>
+000000000001cb50 d typeinfo for pybind11::detail::pyobject_tag
+000000000001cb78 d typeinfo for pybind11::handle
+000000000001cb90 d typeinfo for pybind11::object
+000000000001cba8 D typeinfo for std::_Mutex_base<(__gnu_cxx::_Lock_policy)2>
+                 U typeinfo for std::range_error@GLIBCXX_3.4
+                 U typeinfo for std::domain_error@GLIBCXX_3.4
+                 U typeinfo for std::length_error@GLIBCXX_3.4
+                 U typeinfo for std::out_of_range@GLIBCXX_3.4
+                 U typeinfo for std::runtime_error@GLIBCXX_3.4
+                 U typeinfo for std::overflow_error@GLIBCXX_3.4
+                 U typeinfo for std::invalid_argument@GLIBCXX_3.4
+                 U typeinfo for std::nested_exception@CXXABI_1.3.5
+000000000001cbb8 D typeinfo for std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>
+000000000001cbd0 d typeinfo for std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+                 U typeinfo for std::bad_alloc@GLIBCXX_3.4
+                 U typeinfo for std::exception@GLIBCXX_3.4
+0000000000018e40 r typeinfo name for pybind11::cast_error
+0000000000018f50 r typeinfo name for pybind11::builtin_exception
+0000000000019080 r typeinfo name for pybind11::error_already_set
+0000000000018e60 r typeinfo name for pybind11::reference_cast_error
+0000000000018ee0 r typeinfo name for pybind11::detail::object_api<pybind11::handle>
+0000000000018ea0 r typeinfo name for pybind11::detail::pyobject_tag
+0000000000018f10 r typeinfo name for pybind11::handle
+0000000000018f30 r typeinfo name for pybind11::object
+0000000000018e00 r typeinfo name for void (*)(pybind11::detail::error_fetch_and_normalize*)
+0000000000018f80 R typeinfo name for std::_Mutex_base<(__gnu_cxx::_Lock_policy)2>
+0000000000018fc0 R typeinfo name for std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>
+0000000000019000 r typeinfo name for std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+                 U vtable for __cxxabiv1::__class_type_info@CXXABI_1.3
+                 U vtable for __cxxabiv1::__si_class_type_info@CXXABI_1.3
+000000000001cc18 d vtable for pybind11::cast_error
+000000000001cbe8 d vtable for pybind11::builtin_exception
+000000000001cb28 d vtable for pybind11::error_already_set
+000000000001caf0 d vtable for std::_Sp_counted_deleter<pybind11::detail::error_fetch_and_normalize*, void (*)(pybind11::detail::error_fetch_and_normalize*), std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+                 U vtable for std::bad_alloc@GLIBCXX_3.4
+000000000001cae0 d pybind11::cpp_function::initialize<pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}, void, pybind11::handle>(pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}&&, void (*)(pybind11::handle))::types
+00000000000190a8 r pybind11::cpp_function::initialize<pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}, void, pybind11::handle>(pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}&&, void (*)(pybind11::handle))::signature
+000000000000ee60 t pybind11::cpp_function::initialize<pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}, void, pybind11::handle>(pybind11::detail::all_type_info_get_cache(_typeobject*)::{lambda(pybind11::handle)#1}&&, void (*)(pybind11::handle))::{lambda(pybind11::detail::function_call&)#3}::_FUN(pybind11::detail::function_call&)
+00000000000092c0 t pybind11::cpp_function::initialize_generic(std::unique_ptr<pybind11::detail::function_record, pybind11::cpp_function::InitializingFunctionRecordDeleter>&&, char const*, std::type_info const* const*, unsigned long)::{lambda(void*)#1}::_FUN(void*)
+000000000001d5d8 b pybind11::detail::get_internals_pp()::internals_pp
+000000000001d5c8 b pybind11::detail::get_local_internals()::locals
+000000000000d160 t pybind11::capsule::initialize_with_void_ptr_destructor(void const*, char const*, void (*)(void*))::{lambda(_object*)#1}::_FUN(_object*)
+0000000000007360 t pybind11::capsule::initialize_with_void_ptr_destructor(void const*, char const*, void (*)(void*))::{lambda(_object*)#1}::_FUN(_object*) [clone .cold]
+000000000001909f r pybind11::options::global_state()::instance
+00000000000190c0 r std::__detail::__to_chars_10_impl<unsigned int>(char*, unsigned int, unsigned int)::__digits
+00000000000190c0 r std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)::__digits

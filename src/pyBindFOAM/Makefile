@@ -57,18 +57,18 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/pyBindFOAM//CMakeFiles/progress.marks
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles 0
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/pyBindFOAM//CMakeFiles/progress.marks
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/clean
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,36 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/preinstall
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/preinstall
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-pyBindFOAM/CMakeFiles/foamBindMods.dir/rule:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/CMakeFiles/foamBindMods.dir/rule
-.PHONY : pyBindFOAM/CMakeFiles/foamBindMods.dir/rule
-
-# Convenience name for target.
-foamBindMods: pyBindFOAM/CMakeFiles/foamBindMods.dir/rule
-.PHONY : foamBindMods
-
-# fast build rule for target.
-foamBindMods/fast:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/foamBindMods.dir/build.make pyBindFOAM/CMakeFiles/foamBindMods.dir/build
-.PHONY : foamBindMods/fast
-
-# Convenience name for target.
 pyBindFOAM/CMakeFiles/pyBindFOAM.dir/rule:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/CMakeFiles/pyBindFOAM.dir/rule
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/CMakeFiles/pyBindFOAM.dir/rule
 .PHONY : pyBindFOAM/CMakeFiles/pyBindFOAM.dir/rule
 
 # Convenience name for target.
@@ -186,32 +172,60 @@ pyBindFOAM: pyBindFOAM/CMakeFiles/pyBindFOAM.dir/rule
 
 # fast build rule for target.
 pyBindFOAM/fast:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build
 .PHONY : pyBindFOAM/fast
 
-pyBindFOAM.o: pyBindFOAM.C.o
-.PHONY : pyBindFOAM.o
+# Convenience name for target.
+pyBindFOAM/CMakeFiles/ImportMessage.dir/rule:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/CMakeFiles/ImportMessage.dir/rule
+.PHONY : pyBindFOAM/CMakeFiles/ImportMessage.dir/rule
+
+# Convenience name for target.
+ImportMessage: pyBindFOAM/CMakeFiles/ImportMessage.dir/rule
+.PHONY : ImportMessage
+
+# fast build rule for target.
+ImportMessage/fast:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/ImportMessage.dir/build.make pyBindFOAM/CMakeFiles/ImportMessage.dir/build
+.PHONY : ImportMessage/fast
+
+# Convenience name for target.
+pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/rule:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/rule
+.PHONY : pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/rule
+
+# Convenience name for target.
+pyBindFOAMMods: pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/rule
+.PHONY : pyBindFOAMMods
+
+# fast build rule for target.
+pyBindFOAMMods/fast:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build
+.PHONY : pyBindFOAMMods/fast
+
+pyBindFOAMMods.o: pyBindFOAMMods.C.o
+.PHONY : pyBindFOAMMods.o
 
 # target to build an object file
-pyBindFOAM.C.o:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/pyBindFOAM.C.o
-.PHONY : pyBindFOAM.C.o
+pyBindFOAMMods.C.o:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/pyBindFOAMMods.C.o
+.PHONY : pyBindFOAMMods.C.o
 
-pyBindFOAM.i: pyBindFOAM.C.i
-.PHONY : pyBindFOAM.i
+pyBindFOAMMods.i: pyBindFOAMMods.C.i
+.PHONY : pyBindFOAMMods.i
 
 # target to preprocess a source file
-pyBindFOAM.C.i:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/pyBindFOAM.C.i
-.PHONY : pyBindFOAM.C.i
+pyBindFOAMMods.C.i:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/pyBindFOAMMods.C.i
+.PHONY : pyBindFOAMMods.C.i
 
-pyBindFOAM.s: pyBindFOAM.C.s
-.PHONY : pyBindFOAM.s
+pyBindFOAMMods.s: pyBindFOAMMods.C.s
+.PHONY : pyBindFOAMMods.s
 
 # target to generate assembly for a file
-pyBindFOAM.C.s:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAM.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAM.dir/pyBindFOAM.C.s
-.PHONY : pyBindFOAM.C.s
+pyBindFOAMMods.C.s:
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/build.make pyBindFOAM/CMakeFiles/pyBindFOAMMods.dir/pyBindFOAMMods.C.s
+.PHONY : pyBindFOAMMods.C.s
 
 # Help Target
 help:
@@ -225,11 +239,12 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... foamBindMods"
+	@echo "... ImportMessage"
 	@echo "... pyBindFOAM"
-	@echo "... pyBindFOAM.o"
-	@echo "... pyBindFOAM.i"
-	@echo "... pyBindFOAM.s"
+	@echo "... pyBindFOAMMods"
+	@echo "... pyBindFOAMMods.o"
+	@echo "... pyBindFOAMMods.i"
+	@echo "... pyBindFOAMMods.s"
 .PHONY : help
 
 
@@ -241,6 +256,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

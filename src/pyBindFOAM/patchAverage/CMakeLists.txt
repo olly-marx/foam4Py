@@ -9,4 +9,4 @@ add_library(${name} OBJECT ${SOURCES})
 
 # Add the installation rules
 install(FILES ${HEADERS} 
-    DESTINATION ${CMAKE_PACKAGE_DIR}/include/patchAverage/${name})
+    DESTINATION include/pyBindFOAM/patchAverage/${name})

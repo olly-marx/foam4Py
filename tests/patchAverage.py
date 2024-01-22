@@ -1,14 +1,17 @@
 import sys
 import os
 
-pybind11_folder = '../src/patchAverage/Make/linux64GccDPInt32Opt'
+lib_folder = "../src/pyBindFOAM"
 
-sys.path.append(os.path.abspath(pybind11_folder))
+sys.path.append(os.path.abspath(lib_folder))
 
-import pyBindPatchAverage as patchAverage
+import libpyBindFOAM
 
 def main():
-    patchAverage.calculatePatchAverage()
+    libpyBindFOAM.patchAverage.calculateAverages()
+
+    # print the methods that are available in the module
+    print(dir(patchAverage))
 
 if __name__ == "__main__":
     main()

@@ -57,18 +57,18 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_SOURCE_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src
+CMAKE_BINARY_DIR = /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/pyBindFOAM/patchAverage//CMakeFiles/progress.marks
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src/CMakeFiles 0
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/pyBindFOAM/patchAverage//CMakeFiles/progress.marks
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/clean
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/preinstall
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/preinstall
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/rule:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/rule
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/rule
 .PHONY : pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ patchAverage: pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/rule
 
 # fast build rule for target.
 patchAverage/fast:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build
 .PHONY : patchAverage/fast
 
 patchAverage.o: patchAverage.C.o
@@ -180,7 +180,7 @@ patchAverage.o: patchAverage.C.o
 
 # target to build an object file
 patchAverage.C.o:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.o
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.o
 .PHONY : patchAverage.C.o
 
 patchAverage.i: patchAverage.C.i
@@ -188,7 +188,7 @@ patchAverage.i: patchAverage.C.i
 
 # target to preprocess a source file
 patchAverage.C.i:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.i
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.i
 .PHONY : patchAverage.C.i
 
 patchAverage.s: patchAverage.C.s
@@ -196,32 +196,8 @@ patchAverage.s: patchAverage.C.s
 
 # target to generate assembly for a file
 patchAverage.C.s:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.s
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/patchAverage.C.s
 .PHONY : patchAverage.C.s
-
-pyBindPatchAverage.o: pyBindPatchAverage.C.o
-.PHONY : pyBindPatchAverage.o
-
-# target to build an object file
-pyBindPatchAverage.C.o:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/pyBindPatchAverage.C.o
-.PHONY : pyBindPatchAverage.C.o
-
-pyBindPatchAverage.i: pyBindPatchAverage.C.i
-.PHONY : pyBindPatchAverage.i
-
-# target to preprocess a source file
-pyBindPatchAverage.C.i:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/pyBindPatchAverage.C.i
-.PHONY : pyBindPatchAverage.C.i
-
-pyBindPatchAverage.s: pyBindPatchAverage.C.s
-.PHONY : pyBindPatchAverage.s
-
-# target to generate assembly for a file
-pyBindPatchAverage.C.s:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(MAKE) $(MAKESILENT) -f pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/build.make pyBindFOAM/patchAverage/CMakeFiles/patchAverage.dir/pyBindPatchAverage.C.s
-.PHONY : pyBindPatchAverage.C.s
 
 # Help Target
 help:
@@ -239,9 +215,6 @@ help:
 	@echo "... patchAverage.o"
 	@echo "... patchAverage.i"
 	@echo "... patchAverage.s"
-	@echo "... pyBindPatchAverage.o"
-	@echo "... pyBindPatchAverage.i"
-	@echo "... pyBindPatchAverage.s"
 .PHONY : help
 
 
@@ -253,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ojm40/foam/ojm40-5.0/work/foamPyInterface/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ojm40/foam/ojm40-5.0/work/pyBindFOAM/src && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
