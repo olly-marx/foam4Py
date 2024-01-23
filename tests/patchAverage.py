@@ -1,11 +1,7 @@
 import sys
 import os
 
-lib_folder = "../src/pyBindFOAM"
-
-sys.path.append(os.path.abspath(lib_folder))
-
-import libpyBindFOAM
+import pyBindFOAMPackage
 
 def main():
     libpyBindFOAM.patchAverage.calculateAverages()

@@ -1,7 +1,4 @@
-# include <pybind11/pybind11.h>
-# include <pybind11/stl.h>
-# include <pybind11/numpy.h>
-#include "pyBindFOAM/patchAverage/patchAverage.H"
+# include "pyBindFOAM/patchAverage/patchAverage.H"
 
 PYBIND11_MODULE(pyBindFOAMMods, m)
 {

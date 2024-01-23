@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
-set(CMAKE_COMPILER g++)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
-enable_language(CXX)
+enable_language(C CXX)
 
 # Check if MPI is set
 if(NOT DEFINED MPI)
@@ -48,5 +48,14 @@ if(CMAKE_PYTHON_BINDINGS)
     set(pybind11_DIR pybind11)
 
 endif(CMAKE_PYTHON_BINDINGS)
+
+# Check in FOAM is set if not set it to TRUE
+if(NOT DEFINED FOAM)
+	set(FOAM True)
+endif()
+
+if(FOAM)
+    include(./FOAMConfig.cmake)
+endif()
 
 add_subdirectory(pyBindFOAM)
