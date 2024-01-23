@@ -1,14 +1,14 @@
 #include "patchAverage.H"
 #include <vector>
 
-pyBindFOAM::patchAverage::patchAverage(const word& fieldName, const word& patchName)
+patchAverage::patchAverage(const word& fieldName, const word& patchName)
     : fieldName_(fieldName), patchName_(patchName) {}
 
-pyBindFOAM::patchAverage::~patchAverage() {
+patchAverage::~patchAverage() {
 	Info << "patchAverage destructor" << endl;
 }
 
-void pyBindFOAM::patchAverage::calculateAverages() {
+void patchAverage::calculateAverage() {
 	timeSelector::addOptions();
 	argList::validArgs.append("fieldName");
 	argList::validArgs.append("patchName");
@@ -81,12 +81,14 @@ void pyBindFOAM::patchAverage::calculateAverages() {
 	Info << "End" << endl;
 }
 
-void init_patchAverage(pybind11::module& m) {
-	pybind11::class_<pyBindFOAM::patchAverage>(m, "patchAverage")	
-	.def(pybind11::init<const word&, const word&>())
-	.def("calculateAverage", &pyBindFOAM::patchAverage::calculateAverages)
-	.def("__repr__", [](const pyBindFOAM::patchAverage& pa) {
-		std::string ret = "<patchAverage>";
-		return ret;
-	});
-}
+//void init_patchAverage(pybind11::module& m) {
+//
+//	pybind11::class_<pyBindFOAM::patchAverage>(m, "patchAverage")	
+//	.def(pybind11::init<const word&, const word&>())
+//	.def("calculateAverage", &pyBindFOAM::patchAverage::calculateAverages)
+//	.def("__repr__", [](const pyBindFOAM::patchAverage& pa) {
+//		std::string ret = "<patchAverage>";
+//		return ret;
+//	});
+//
+//}

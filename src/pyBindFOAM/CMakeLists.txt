@@ -1,9 +1,10 @@
+set(OBJECTS)
+
 add_subdirectory(patchAverage)
 
 # Define the source files for pyBindFOAM library
-add_library(pyBindFOAM SHARED
-    $<TARGET_OBJECTS:patchAverage>
-)
+add_library(pyBindFOAM STATIC ${OBJECTS})
+set_target_properties(pyBindFOAM PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Link against the foam library
 target_link_libraries(pyBindFOAM ${FOAM_LIBRARIES})
@@ -18,15 +19,9 @@ if(CMAKE_PYTHON_BINDINGS)
     message("Python bindings enabled")
     pybind11_add_module(pyBindFOAMMods SHARED pyBindFOAMMods.C)
 
-    set_target_properties(pyBindFOAMMods PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
-
     # Link against the pyBindFOAM library directly with the full path
-    link_directories(${CMAKE_CURRENT_BINARY_DIR})
-    target_link_libraries(pyBindFOAMMods PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpyBindFOAM.so)
-
-    set_target_properties(pyBindFOAMMods PROPERTIES INSTALL_RPATH "${CMAKE_PACKAGE_DIR}/lib/")
-
-    set_target_properties(pyBindFOAMMods PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+    #link_directories(${CMAKE_CURRENT_BINARY_DIR})
+    target_link_libraries(pyBindFOAMMods PRIVATE pyBindFOAM)
 endif()
 
 # Install the pyBindFOAM library

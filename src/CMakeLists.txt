@@ -5,8 +5,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-enable_language(C CXX)
-
 # Check if MPI is set
 if(NOT DEFINED MPI)
 	set(MPI False)
@@ -25,8 +23,6 @@ project(pyBindFOAM)
 set(CMAKE_PACKAGE_DIR "pyBindFOAMPackage")
 
 include_directories("./")
-
-#set(CMAKE_INSTALL_PREFIX "..")
 
 # Check if CMAKE_PYTHON_BINDINGS is set
 if(NOT DEFINED CMAKE_PYTHON_BINDINGS)

@@ -1,13 +1,11 @@
 import sys
 import os
 
-import pyBindFOAMPackage
+from pyBindFOAMPackage import patchAverage
 
 def main():
-    libpyBindFOAM.patchAverage.calculateAverages()
-
-    # print the methods that are available in the module
-    print(dir(patchAverage))
+    patchAverageInstance = patchAverage("U","movingWall")
+    patchAverageInstance.calculateAverage()
 
 if __name__ == "__main__":
     main()
