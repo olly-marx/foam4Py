@@ -1,8 +1,13 @@
 #include "patchAverage.H"
+#include "../utils/importObject.H"
+#include <string>
 #include <vector>
 
-patchAverage::patchAverage(const word& fieldName, const word& patchName)
-    : fieldName_(fieldName), patchName_(patchName) {}
+patchAverage::patchAverage(const std::string fieldName, const std::string patchName)
+{
+    fieldName_ = Foam::word(fieldName);
+    patchName_ = Foam::word(patchName);
+}
 
 patchAverage::~patchAverage() {
 	Info << "patchAverage destructor" << endl;
@@ -24,7 +29,7 @@ void patchAverage::calculateAverage() {
 	char** argv = argv_.data();
 
 #include "setRootCase.H"
-#include "createTime.H"
+#include "../controls/createTime.H"
 	instantList timeDirs = timeSelector::select0(runTime, args);
 
 #include "createMesh.H"

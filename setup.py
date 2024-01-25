@@ -36,7 +36,6 @@ setup(
     cmake_source_dir='src/',
     include_package_data=True,
     packages=['pyBindFOAMPackage', 'pyBindFOAMPackage.include','src/pybind11'],
-    #package_dir={''},
     cmake_args=[
         '-DCMAKE_PYTHON_BINDINGS={}'.format(pybind_value),
         '-DFOAM:BOOL={}'.format('ON'),
@@ -56,6 +55,7 @@ setup(
         "scikit-build",
         "cmake",
     ],
+    scripts=['bin/patchAverage'],
     long_description=long_description,
     long_description_content_type='text/markdown',
 )

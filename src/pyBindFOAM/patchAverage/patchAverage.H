@@ -3,18 +3,19 @@
 
 #include "fvCFD.H"
 #include <pybind11/pybind11.h>
+#include <string>
 
 class patchAverage {
 public:
-    patchAverage(const word& fieldName, const word& patchName);
+    patchAverage(const std::string fieldName, const std::string patchName);
 
     ~patchAverage();
 
     void calculateAverage();
 
 private:
-    const word& fieldName_;
-    const word& patchName_;
+    Foam::word fieldName_;
+    Foam::word patchName_;
 };
 
 //__attribute__ ((visibility ("default"))) void init_patchAverage(pybind11::module m);
