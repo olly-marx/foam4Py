@@ -8,11 +8,11 @@ set_target_properties(pyBindFOAM PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Link against the foam library
 target_link_libraries(pyBindFOAM ${FOAM_LIBRARIES})
-message("Foam libraries: ${FOAM_LIBRARIES}")
+# message("Foam libraries: ${FOAM_LIBRARIES}")
 
 # Link against the python library
 target_link_libraries(pyBindFOAM ${Python_LIBRARIES})
-message("Python libraries: ${Python_LIBRARIES}")
+# message("Python libraries: ${Python_LIBRARIES}")
 
 if(CMAKE_PYTHON_BINDINGS)
     # print if python bindings are enabled

@@ -48,9 +48,9 @@ file(GLOB FOAM_LIBRARIES "${FOAM_LIB_DIR}/*.so")
 
 # print a list of the include directories
 get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-foreach(dir ${dirs})
-  message(STATUS "foam-extend-5.0: include dir='${dir}'")
-endforeach()
+# foreach(dir ${dirs})
+#   message(STATUS "foam-extend-5.0: include dir='${dir}'")
+# endforeach()
 
 link_directories(${FOAM_LIB_DIR} ${FOAM_LIB_DIR}/${PATH_LIB_OPENMPI})
 

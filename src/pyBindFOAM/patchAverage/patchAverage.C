@@ -29,7 +29,7 @@ void patchAverage::calculateAverage() {
 	char** argv = argv_.data();
 
 #include "setRootCase.H"
-#include "../controls/createTime.H"
+#include "createTime.H"
 	instantList timeDirs = timeSelector::select0(runTime, args);
 
 #include "createMesh.H"

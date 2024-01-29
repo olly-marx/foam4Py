@@ -39,17 +39,18 @@ PYBIND11_MODULE(pyBindFOAMMods, m)
 	});
 
     // Bind the keyType class to python only bind the add method that
-    py::class_<Foam::string::keyType>(m, "keyType")
-	.def(py::init<const Foam::word&>())
+    py::class_<Foam::keyType>(m, "keyType")
+	.def(py::init<const Foam::word&>());
 
     // Bind dictionary class to python, only bind the default constructor
     // and the overloaded add method with the following signature:
     // Foam::dictionary::add(const keyType&, const word&, bool overwrite = false);
     py::class_<Foam::dictionary>(m, "dictionary")
 	.def(py::init())
-	.def("add", [](Foam::dictionary& d, const Foam::string::keyType& key, 
+	.def("add", [](Foam::dictionary& d, const Foam::keyType& key, 
 		    const Foam::word& word, bool overwrite) {
 	    d.add(key, word, overwrite);
+	});
     
     
     m.attr("__version__") = "0.0.1";

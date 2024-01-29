@@ -35,7 +35,6 @@ setup(
     version=verstr,
     cmake_source_dir='src/',
     include_package_data=True,
-    packages=['pyBindFOAMPackage', 'pyBindFOAMPackage.include','src/pybind11'],
     cmake_args=[
         '-DCMAKE_PYTHON_BINDINGS={}'.format(pybind_value),
         '-DFOAM:BOOL={}'.format('ON'),
@@ -50,12 +49,13 @@ setup(
     author=['Oliver Marx'],
     author_email='oliver.j.marx@gmail.com',
     description='A version of OpenFOAM with a python interface',
+    packages=['pyBindFOAMPackage', 'src/pybind11'],
+    scripts=['bin/patchAverage', 'bin/pyBindFOAM'],
     install_requires=[
         "numpy",
         "scikit-build",
         "cmake",
     ],
-    scripts=['bin/patchAverage'],
     long_description=long_description,
     long_description_content_type='text/markdown',
 )
