@@ -24,6 +24,11 @@ set(CMAKE_PACKAGE_DIR "pyBindFOAMPackage")
 
 include_directories("./")
 
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(json)                                                           
+message("NLOHMANN_JSON_INCLUDE_INSTALL_DIR: ${NLOHMANN_JSON_INCLUDE_INSTALL_DIR}")
+include_directories(json/include)
+
 # Check if CMAKE_PYTHON_BINDINGS is set
 if(NOT DEFINED CMAKE_PYTHON_BINDINGS)
 	set(CMAKE_PYTHON_BINDINGS True)
@@ -42,6 +47,10 @@ if(CMAKE_PYTHON_BINDINGS)
     include_directories(${PYBIND11_INCLUDE_DIR})
     
     set(pybind11_DIR pybind11)
+
+    # Get pybind11_json
+    add_subdirectory(pybind11_json)
+    include_directories(pybind11_json/include)
 
 endif(CMAKE_PYTHON_BINDINGS)
 

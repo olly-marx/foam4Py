@@ -1,9 +1,11 @@
 #include "patchAverage.H"
 #include "../utils/importObject.H"
+#include "pyBindFOAM/fvCFDWrapper/fvCFDWrapper.H"
 #include <string>
 #include <vector>
 
-patchAverage::patchAverage(const std::string fieldName, const std::string patchName)
+patchAverage::patchAverage(const std::string fieldName, const std::string patchName, 
+        const fvCFDWrapper& foamCase) : foamCase_(foamCase)
 {
     fieldName_ = Foam::word(fieldName);
     patchName_ = Foam::word(patchName);
@@ -29,9 +31,35 @@ void patchAverage::calculateAverage() {
 	char** argv = argv_.data();
 
 #include "setRootCase.H"
-#include "createTime.H"
+
+	// # include "createTime.H" refactor
+	Foam::Info<< "Create time\n" << Foam::endl;                                      
+
+    const Foam::fileName rootPath = ".";
+    const Foam::fileName caseName = ".";
+
+    
+											 
+	Foam::Time runTime(foamCase_.getControlDict(), Foam::fileName("."), Foam::fileName("."), 
+        Foam::word("system"), Foam::word("constant"), false);
+
 	instantList timeDirs = timeSelector::select0(runTime, args);
 
+	// # include "createMesh.H" refactor
+	//Foam::Info                                                                   
+	//    << "Create mesh for time = "                                             
+	//    << runTime.timeName() << Foam::nl << Foam::endl;                         
+	//									     
+	//Foam::fvMesh mesh                                                            
+	//(                                                                            
+	//    Foam::IOobject                                                           
+	//    (                                                                        
+	//	Foam::fvMesh::defaultRegion,                                         
+	//	runTime.timeName(),                                                  
+	//	runTime,                                                             
+	//	Foam::IOobject::MUST_READ                                            
+	//    )                                                                        
+	//);
 #include "createMesh.H"
 
 	forAll(timeDirs, timeI) {
@@ -86,14 +114,6 @@ void patchAverage::calculateAverage() {
 	Info << "End" << endl;
 }
 
-//void init_patchAverage(pybind11::module& m) {
-//
-//	pybind11::class_<pyBindFOAM::patchAverage>(m, "patchAverage")	
-//	.def(pybind11::init<const word&, const word&>())
-//	.def("calculateAverage", &pyBindFOAM::patchAverage::calculateAverages)
-//	.def("__repr__", [](const pyBindFOAM::patchAverage& pa) {
-//		std::string ret = "<patchAverage>";
-//		return ret;
-//	});
-//
+//void bindPatchAverage(py::module &m) {
+//    // Bind patchAverage class to python
 //}

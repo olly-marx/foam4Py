@@ -81,8 +81,18 @@ def runInterface():
             # Show available commands
             iu.print_commands()
 
+        elif user_input.lower().strip() == "mesh" or str(user_input.strip()) ==\
+                "4" or user_input.lower().strip() == "m":
+            # Mesh the domain
+            iu.mesh_domain(project_dir, dictionaries)            
+
+        elif user_input.lower().strip() == "solve" or str(user_input.strip()) ==\
+                "5" or user_input.lower().strip() == "s":
+                    print("Solving the case...")
+                    print("Done! This isn't implemented yet, but it will be soon! :)")
+
         elif user_input.lower().strip() == "quit" or str(user_input.strip()) ==\
-                "4" or user_input.lower().strip() == "q":
+                "0" or user_input.lower().strip() == "q":
             # Quit the interface
             print("Exiting pyBindFOAM interface. Goodbye!")
             break

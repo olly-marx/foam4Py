@@ -89,6 +89,7 @@ def read_openfoam_dictionary(file_path):
         line = line.strip("()")
         line_list = line.split()
         for item in line_list:
+            
             result_list.append(item)
         return result_list
 
@@ -137,6 +138,7 @@ def read_openfoam_dictionary(file_path):
         print(f"Error parsing file '{file_path}' at line {line_number}: {str(e)}")
         print(f"Line: {line}")
 
+    print(result_dict)
     return result_dict
 
 def print_nested_dict(d, indent=0):

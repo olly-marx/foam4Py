@@ -1,6 +1,8 @@
 set(OBJECTS)
 
 add_subdirectory(patchAverage)
+add_subdirectory(importTools)
+add_subdirectory(fvCFDWrapper)
 
 # Define the source files for pyBindFOAM library
 add_library(pyBindFOAM STATIC ${OBJECTS})
@@ -13,6 +15,9 @@ target_link_libraries(pyBindFOAM ${FOAM_LIBRARIES})
 # Link against the python library
 target_link_libraries(pyBindFOAM ${Python_LIBRARIES})
 # message("Python libraries: ${Python_LIBRARIES}")
+
+# Link against the json library
+target_link_libraries(pyBindFOAM nlohmann_json::nlohmann_json)
 
 if(CMAKE_PYTHON_BINDINGS)
     # print if python bindings are enabled

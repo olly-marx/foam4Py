@@ -5,6 +5,7 @@ import sys
 import subprocess
 from pyBindFOAMPackage import importFoamDict as ifd
 from pyBindFOAMPackage import findFoamDicts as ffd
+from pyBindFOAMPackage import meshUtils as mu
 import json
 import datetime as dt
 
@@ -14,7 +15,9 @@ def print_commands():
     print("1. view (v) - View the contents of a specific dictionary.")
     print("2. edit (e) - Edit the contents of a specific dictionary.")
     print("3. help (h) - Show available commands.")
-    print("4. quit (q) - Exit the pyBindFOAM interface.")
+    print("4. mesh (m) - Run the meshing utility blockMesh.")
+    print("5. solve (s) - Run the solver specified in the controlDict file.")
+    print("0. quit (q) - Exit the pyBindFOAM interface.")
     # Also add an instruction to tell the user they can use normal Python
     # commands to interact with the dictionaries. For example, they can
     # type "dictionaries.keys()" to see the names of the dictionaries.
@@ -224,3 +227,5 @@ def edit_dictionary_string(dictionaries, history_command):
 
     return dictionaries
 
+def mesh_domain(project_dir, dictionaries):
+   mu.runBlockMesh(project_dir, dictionaries)

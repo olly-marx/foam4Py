@@ -1,8 +1,8 @@
 # include "patchAverage/patchAverage.H"
+# include "fvCFDWrapper/fvCFDWrapper.H"
 // include standard library
-# include <iostream>
-# include <string>
 # include <pybind11/pybind11.h>
+# include <pybind11/stl.h>
 # include "fvCFD.H"
 
 namespace py = pybind11;
@@ -20,15 +20,6 @@ PYBIND11_MODULE(pyBindFOAMMods, m)
 
 		   patchAverage
 	)pbdoc";
-
-    // Bind patchAverage class to python
-    py::class_<patchAverage>(m, "patchAverage")	
-	.def(py::init<const std::string, const std::string>())
-	.def("calculateAverage", &patchAverage::calculateAverage)
-	.def("__repr__", [](const patchAverage& pa) {
-	    std::string ret = "<patchAverage>";
-	    return ret;
-	});
 
     // Bind word class to python
     py::class_<Foam::word>(m, "word")
@@ -50,6 +41,35 @@ PYBIND11_MODULE(pyBindFOAMMods, m)
 	.def("add", [](Foam::dictionary& d, const Foam::keyType& key, 
 		    const Foam::word& word, bool overwrite) {
 	    d.add(key, word, overwrite);
+	});
+
+    //bindfvCFDWrapper(m);
+    py::class_<fvCFDWrapper>(m, "fvCFDWrapper")
+        .def(py::init<const py::dict&>())
+        .def("getControlDict", &fvCFDWrapper::getControlDict)
+        //.def("setValue", &fvCFDWrapper::setValue)
+        //.def("getValue", &fvCFDWrapper::getValue);
+	.def("__repr__", [](const Foam::word& w) {
+		std::string ret = "<word>";
+		return ret;
+	});
+
+    //bindPatchAverage(m);
+    py::class_<patchAverage>(m, "patchAverage")	
+	.def(py::init<const std::string, const std::string, const fvCFDWrapper&>())
+	.def("calculateAverage", &patchAverage::calculateAverage)
+	.def("__repr__", [](const patchAverage& pa) {
+	    std::string ret = "<patchAverage>";
+	    return ret;
+	});
+
+    // bind the standard library string class to python
+    py::class_<std::string>(m, "string")
+	.def(py::init<>())
+	.def(py::init<const char*>())
+	.def("__repr__", [](const std::string& s) {
+	    std::string ret = "<string>";
+	    return ret;
 	});
     
     
