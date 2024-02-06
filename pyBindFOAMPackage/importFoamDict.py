@@ -22,7 +22,7 @@ def read_openfoam_dictionary(file_path):
             if line == "}":
                 break
             elif line.endswith(";"):
-                key, value = map(str.strip, line.rstrip(';').split(None, 1))
+                key, value = process_line(line)
                 result_dict[key] = value
             # The start of a nested block will just be a key
             elif len(line.split()) == 1:
@@ -48,6 +48,13 @@ def read_openfoam_dictionary(file_path):
                 result_list.append(value)
             elif line.endswith(";"):
                 key, value = map(str.strip, line.rstrip(';').split(None, 1))
+                try:
+                    value = int(value)
+                except ValueError:
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        pass
                 result_list.append(value)
             elif line.startswith("hex"):
                 result_list.append(process_hex(line))
@@ -84,12 +91,43 @@ def read_openfoam_dictionary(file_path):
                 break
         return result_list
 
+    def process_line(line):
+        key, value = map(str.strip, line.rstrip(';').split(None, 1))
+
+        if "uniform" in value: # For either "uniform (0 0 0)" or "uniform 0"
+            uniform_value = process_inline_array(value)
+            value = {"uniform": uniform_value}
+        # also wanty to process the line "dimensions      [0 1 -1 0 0 0 0];"
+        elif value.startswith("["):
+            value = process_inline_array(value)
+
+        else:
+            try:
+                value = int(value)
+            except ValueError:
+                try:
+                    value = float(value)
+                except ValueError:
+                    if value == "yes":
+                        value = True
+                    elif value == "no":
+                        value = False
+                    else:
+                        pass
+        return key, value
+
     def process_inline_array(line):
         result_list = []
-        line = line.strip("()")
         line_list = line.split()
         for item in line_list:
-            
+            item = item.strip("()[]")
+            try:
+                item = int(item)
+            except ValueError:
+                try:
+                    item = float(item)
+                except ValueError:
+                    pass
             result_list.append(item)
         return result_list
 
@@ -118,6 +156,15 @@ def read_openfoam_dictionary(file_path):
                         continue
                     elif line.endswith(";"):
                         key, value = map(str.strip, line.rstrip(';').split(None, 1))
+                        # We want value to be the correcrt type, so we try to
+                        # convert it to an int or float, otherwise leave it as a string
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            try:
+                                value = float(value)
+                            except ValueError:
+                                pass
                         result_dict[key] = value
                     elif len(line.split()) == 1:
                         # if the line is just a string, it's the start of a block

@@ -1,6 +1,6 @@
 #include "patchAverage.H"
-#include "../utils/importObject.H"
 #include "pyBindFOAM/fvCFDWrapper/fvCFDWrapper.H"
+#include "pyBindFOAM/utils/importObject.H"
 #include <string>
 #include <vector>
 
@@ -38,28 +38,15 @@ void patchAverage::calculateAverage() {
     const Foam::fileName rootPath = ".";
     const Foam::fileName caseName = ".";
 
-    
-											 
-	Foam::Time runTime(foamCase_.getControlDict(), Foam::fileName("."), Foam::fileName("."), 
+    Foam::dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
+
+    Foam::Info << "controlDict has been init to "<< controlDict << Foam::endl;
+
+	Foam::Time runTime(controlDict, Foam::fileName("."), Foam::fileName("."), 
         Foam::word("system"), Foam::word("constant"), false);
 
 	instantList timeDirs = timeSelector::select0(runTime, args);
 
-	// # include "createMesh.H" refactor
-	//Foam::Info                                                                   
-	//    << "Create mesh for time = "                                             
-	//    << runTime.timeName() << Foam::nl << Foam::endl;                         
-	//									     
-	//Foam::fvMesh mesh                                                            
-	//(                                                                            
-	//    Foam::IOobject                                                           
-	//    (                                                                        
-	//	Foam::fvMesh::defaultRegion,                                         
-	//	runTime.timeName(),                                                  
-	//	runTime,                                                             
-	//	Foam::IOobject::MUST_READ                                            
-	//    )                                                                        
-	//);
 #include "createMesh.H"
 
 	forAll(timeDirs, timeI) {

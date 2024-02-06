@@ -51,11 +51,11 @@ setup(
     description='A version of OpenFOAM with a python interface',
     packages=['pyBindFOAMPackage', 'src/pybind11'],
     scripts=['bin/patchAverage', 'bin/pyBindFOAM'],
-    install_requires=[
-        "numpy",
-        "scikit-build",
-        "cmake",
-    ],
+    #install_requires=[
+    #    "numpy",
+    #    "scikit-build",
+    #    "cmake",
+    #],
     long_description=long_description,
     long_description_content_type='text/markdown',
 )

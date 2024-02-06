@@ -7,6 +7,3 @@
 [submodule "src/json"]
 	path = src/json
 	url = https://github.com/nlohmann/json.git
-[submodule "pybind_json"]
-	path = pybind_json
-	url = https://github.com/pybind/pybind11_json.git
