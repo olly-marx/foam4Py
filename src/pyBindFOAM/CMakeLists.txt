@@ -3,6 +3,7 @@ set(OBJECTS)
 add_subdirectory(patchAverage)
 add_subdirectory(fvCFDWrapper)
 add_subdirectory(utils)
+add_subdirectory(pyBlockMesh)
 
 # Define the source files for pyBindFOAM library
 add_library(pyBindFOAM STATIC ${OBJECTS})

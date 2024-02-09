@@ -1,16 +1,14 @@
-#include "blockMesh.H"
-#include "pyBindFOAM/fvCFDWrapper/fvCFDWrapper.H"
-#include <string>
-#include <vector>
+#include "pyBlockMesh.H"
+#include "pybind11/pytypes.h"
 
-blockMesh::blockMesh(const fvCFDWrapper& foamCase) : foamCase_(foamCase){}
+pyBlockMesh::pyBlockMesh(const fvCFDWrapper& foamCase) : foamCase_(foamCase){}
 
-blockMesh::~blockMesh()
+pyBlockMesh::~pyBlockMesh()
 {
-    Foam::Info << "blockMesh destructor" << Foam::endl;
+    Info << "blockMesh destructor" << endl;
 }
 
-void blockMesh::generateMesh()
+void pyBlockMesh::generateMesh(py::object pyargv11)
 {
 
     argList::addNote
@@ -52,25 +50,22 @@ void blockMesh::generateMesh()
 
     timeSelector::addOptions();
 
-    std::vector<std::string> arguments = {"null"};
+    arguments pyArgs = arguments(pyargv11);
 
-    std::vector<char*> argv_;
-    for (const auto& arg : arguments)
-        argv_.push_back((char*)arg.data());
-    argv_.push_back(nullptr);
-
-    int argc = argv_.size() - 1;
-    char** argv = argv_.data();
+    int argc = pyArgs.argc_;
+    char **argv = pyArgs.argv_;
 
 #include "setRootCase.H"
 
-    Foam::Info << "Create time\n" << Foam::endl;
+    Info << "Create time\n" << endl;
 
-    const Foam::fileName rootPath = ".";
-    const Foam::fileName caseName = ".";
+    const fileName rootPath = ".";
+    const fileName caseName = ".";
 
-    Foam::Time runTime(foamCase_.getControlDict(), Foam::fileName("."), Foam::fileName("."), 
-            Foam::word("system"), Foam::word("constant"), false);
+    dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
+
+    Time runTime(controlDict, rootPath, caseName,
+            word("system"), word("constant"), false);
 
     instantList timeDirs = timeSelector::select0(runTime, args);
 
@@ -85,7 +80,21 @@ void blockMesh::generateMesh()
     }
 
     // Locate appropriate blockMeshDict
-#   include "findBlockMeshDict.H"
+    //#include "findBlockMeshDict.H"
+    dictionary blockMeshDict = utils::importDictionary(foamCase_, "blockMeshDict");
+
+    const IOdictionary meshDict(
+        IOobject
+        (
+            "blockMeshDict",
+            runTime.constant(),
+            runTime,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            false
+        ),
+        blockMeshDict
+    );
 
     blockMesh blocks(meshDict, regionName);
 
@@ -127,8 +136,6 @@ void blockMesh::generateMesh()
         }
 
         Info<< nl << "end" << endl;
-
-        return 0;
     }
 
 

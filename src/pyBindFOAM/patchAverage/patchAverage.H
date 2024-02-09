@@ -3,24 +3,24 @@
 
 #include "fvCFD.H"
 #include "pyBindFOAM/fvCFDWrapper/fvCFDWrapper.H"
+#include "pyBindFOAM/utils/importObject.H"
+#include "pyBindFOAM/utils/argumentParser.H"
 #include <pybind11/pybind11.h>
 #include <string>
+#include "scalar.H"
+#include <vector>
 
 namespace py = pybind11;
 
 class patchAverage {
 public:
-    patchAverage(const std::string fieldName, const std::string patchName,
-            const fvCFDWrapper& foamCase);
-
+    patchAverage(const fvCFDWrapper& foamCase);
 
     ~patchAverage();
 
-    void calculateAverage();
+    void calculateAverage(py::object pyargv11);
 
 private:
-    Foam::word fieldName_;
-    Foam::word patchName_;
     const fvCFDWrapper& foamCase_;
 };
 

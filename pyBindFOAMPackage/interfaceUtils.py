@@ -5,23 +5,50 @@ import sys
 import subprocess
 from pyBindFOAMPackage import importFoamDict as ifd
 from pyBindFOAMPackage import findFoamDicts as ffd
-from pyBindFOAMPackage import meshUtils as mu
 import json
 import datetime as dt
 
 # Function to print available commands
 def print_commands():
-    print("\nAvailable Commands:")
-    print("1. view (v) - View the contents of a specific dictionary.")
-    print("2. edit (e) - Edit the contents of a specific dictionary.")
-    print("3. help (h) - Show available commands.")
-    print("4. mesh (m) - Run the meshing utility blockMesh.")
-    print("5. solve (s) - Run the solver specified in the controlDict file.")
-    print("0. quit (q) - Exit the pyBindFOAM interface.")
-    # Also add an instruction to tell the user they can use normal Python
-    # commands to interact with the dictionaries. For example, they can
-    # type "dictionaries.keys()" to see the names of the dictionaries.
-    print("5. You can also use normal Python commands.")
+    commands = """
+    Available Commands:
+    1. view (v) - View the contents of a specific dictionary.
+    2. edit (e) - Edit the contents of a specific dictionary.
+    3. help (h) - Show available commands.
+    4. mesh (m) - Run the meshing utility blockMesh.
+    5. solve (s) - Run the solver specified in the controlDict file.
+    6. postprocess (p) - Postprocess the case.
+    0. quit (q) - Exit the pyBindFOAM interface.
+
+    You can also use normal Python commands, e.g. print(dictionaries.keys())
+    """
+    print(commands)
+
+def print_options(section):
+    options = ""
+    if section == "mesh":
+        options = """
+        **********************************************************
+        *                                                        *
+        *  Meshing Options:                                      *
+        *                                                        *
+        *  1. Generate the mesh (blockMesh) [bm]                 *
+        *  0. Return to the main menu (back) [b]                 *
+        *                                                        *
+        **********************************************************
+        """
+    elif section == "postprocess":
+        options = """
+        **********************************************************
+        *                                                        *
+        *  Postprocessing Options:                               *
+        *                                                        *
+        *  1. Calculate the patch averages (patchAverages) [pa]  *
+        *  0. Return to the main menu (back) [b]                 *
+        *                                                        *
+        **********************************************************
+        """
+    print(options)
 
 # Function to import an OpenFOAM project directory
 def import_project():
@@ -226,6 +253,3 @@ def edit_dictionary_string(dictionaries, history_command):
         print(f"Error: {e}. Invalid edit. Try again.")
 
     return dictionaries
-
-def mesh_domain(project_dir, dictionaries):
-   mu.runBlockMesh(project_dir, dictionaries)

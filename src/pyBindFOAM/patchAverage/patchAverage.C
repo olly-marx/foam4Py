@@ -1,49 +1,44 @@
 #include "patchAverage.H"
-#include "pyBindFOAM/fvCFDWrapper/fvCFDWrapper.H"
-#include "pyBindFOAM/utils/importObject.H"
-#include <string>
-#include <vector>
 
-patchAverage::patchAverage(const std::string fieldName, const std::string patchName, 
-        const fvCFDWrapper& foamCase) : foamCase_(foamCase)
-{
-    fieldName_ = Foam::word(fieldName);
-    patchName_ = Foam::word(patchName);
-}
+patchAverage::patchAverage(const fvCFDWrapper& foamCase) : foamCase_(foamCase){}
 
 patchAverage::~patchAverage() {
 	Info << "patchAverage destructor" << endl;
 }
 
-void patchAverage::calculateAverage() {
+void patchAverage::calculateAverage(pybind11::object pyargv11)
+{
+    arguments pyArgs = arguments(pyargv11);
+
 	timeSelector::addOptions();
 	argList::validArgs.append("fieldName");
 	argList::validArgs.append("patchName");
 
-	std::vector<std::string> arguments = {"null", fieldName_, patchName_};
+    int argc = pyArgs.argc_;
+    char **argv = pyArgs.argv_;
 
-	std::vector<char*> argv_;
-	for (const auto& arg : arguments)
-		argv_.push_back((char*)arg.data());
-	argv_.push_back(nullptr);
+    // Print the command line arguments
+    for (int i = 0; i < argc; i++) {
+        Info << "argv[" << i << "] = " << argv[i] << endl;
+    }
 
-	int argc = argv_.size() - 1;
-	char** argv = argv_.data();
+    word fieldName(argv[1]);
+    word patchName(argv[2]);
 
 #include "setRootCase.H"
 
 	// # include "createTime.H" refactor
-	Foam::Info<< "Create time\n" << Foam::endl;                                      
+	Info<< "Create time\n" << endl;                                      
 
-    const Foam::fileName rootPath = ".";
-    const Foam::fileName caseName = ".";
+    const fileName rootPath = ".";
+    const fileName caseName = ".";
 
-    Foam::dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
+    dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
 
-    Foam::Info << "controlDict has been init to "<< controlDict << Foam::endl;
+    Info << "controlDict has been init to "<< controlDict << endl;
 
-	Foam::Time runTime(controlDict, Foam::fileName("."), Foam::fileName("."), 
-        Foam::word("system"), Foam::word("constant"), false);
+	Time runTime(controlDict, fileName("."), fileName("."), 
+        word("system"), word("constant"), false);
 
 	instantList timeDirs = timeSelector::select0(runTime, args);
 
@@ -54,7 +49,7 @@ void patchAverage::calculateAverage() {
 	    Info << "Time = " << runTime.timeName() << endl;
 
 	    IOobject fieldHeader(
-		fieldName_,
+        fieldName,
 		runTime.timeName(),
 		mesh,
 		IOobject::MUST_READ
@@ -64,14 +59,14 @@ void patchAverage::calculateAverage() {
 	    if (fieldHeader.headerOk()) {
 		mesh.readUpdate();
 
-		label patchi = mesh.boundaryMesh().findPatchID(patchName_);
+		label patchi = mesh.boundaryMesh().findPatchID(patchName);
 		if (patchi < 0) {
-		    FatalError << "Unable to find patch " << patchName_ << endl
+		    FatalError << "Unable to find patch " << patchName << endl
 			       << exit(FatalError);
 		}
 
 		if (fieldHeader.headerClassName() == "volScalarField") {
-		    Info << "    Reading volScalarField " << fieldName_ << endl;
+		    Info << "    Reading volScalarField " << fieldName << endl;
 		    volScalarField field(fieldHeader, mesh);
 
 		    scalar area = gSum(mesh.magSf().boundaryField()[patchi]);
@@ -84,15 +79,15 @@ void patchAverage::calculateAverage() {
 			) / area;
 		    }
 
-		    Info << "    Average of " << fieldName_ << " over patch "
-			 << patchName_ << '[' << patchi << ']' << " = "
+		    Info << "    Average of " << fieldName << " on patch "
+			 << patchName << '[' << patchi << ']' << " = "
 			 << sumField << endl;
 		} else {
 		    FatalError << "Only possible to average volScalarFields " << endl
 			       << exit(FatalError);
 		}
 	    } else {
-		Info << "    No field " << fieldName_ << endl;
+		Info << "    No field " << fieldName << endl;
 	    }
 
 	    Info << endl;

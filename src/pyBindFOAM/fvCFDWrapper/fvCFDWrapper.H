@@ -4,12 +4,12 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
-#include <string>
 #include <nlohmann/json.hpp>
 #include "fvCFD.H"
 
 namespace py = pybind11;
-namespace nl = nlohmann;
+using json = nlohmann::json;
+using namespace nlohmann;
 
 using namespace pybind11::literals;
 
@@ -35,14 +35,14 @@ public:
      *
      * @return Foam::dictionary The control dictionary.
      */
-    Foam::dictionary getControlDict() const;
+    dictionary getControlDict() const;
 
     /**
      * @brief Get the case dictionaries from the wrapped fvCFD object.
      *
      * @return const nl::json& The case dictionaries in JSON format.
      */
-    const nl::json& getDictionaries() const;
+    const json& getDictionaries() const;
 
     /**
      * @brief Overloaded assignment operator for fvCFDWrapper.
@@ -53,8 +53,8 @@ public:
     fvCFDWrapper& operator=(const fvCFDWrapper& other);
 
 private:
-    Foam::dictionary controlDict;   ///< Control dictionary from fvCFD.
-    nl::json caseDictionaries;      ///< Case dictionaries in JSON format.
+    dictionary controlDict;   ///< Control dictionary from fvCFD.
+    json caseDictionaries;      ///< Case dictionaries in JSON format.
 };
 
 // Binding code

@@ -10,7 +10,6 @@ namespace utils
  * @param objectName The name of the dictionary object to import.
  * @return Foam::dictionary The imported dictionary.
  */
-    Foam::dictionary importDictionary(const fvCFDWrapper& foamCase, const std::string& objectName);
-    Foam::dictionary makeDict(nl::json& dict);
-    void addArray(Foam::dictionary& resultDict, nl::json& array);
+    dictionary importDictionary(const fvCFDWrapper& foamCase, const std::string& objectName);
+    dictionary makeDict(json& dict);
 }

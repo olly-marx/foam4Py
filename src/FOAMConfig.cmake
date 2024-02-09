@@ -42,6 +42,8 @@ file(GLOB FOAM_INCLUDE_DIRS "${FOAM_SRC}/*/lnInclude")
 include_directories(${FOAM_INCLUDE_DIRS})
 include_directories(${FOAM_SRC}/OSspecific/POSIX)
 include_directories(${FOAM_SRC}/OSspecific/POSIX/lnInclude)
+include_directories(${FOAM_SRC}/mesh/blockMesh/lnInclude)
+include_directories(${FOAM_SRC}/dynamicMesh/dynamicMesh/lnInclude)
 
 # use glob to find all foam libraries
 file(GLOB FOAM_LIBRARIES "${FOAM_LIB_DIR}/*.so")

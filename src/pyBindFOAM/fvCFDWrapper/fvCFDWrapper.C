@@ -10,11 +10,11 @@ fvCFDWrapper::fvCFDWrapper() {
 fvCFDWrapper::fvCFDWrapper(const py::dict& dictionaries) :
     caseDictionaries(dictionaries) {}
 
-Foam::dictionary fvCFDWrapper::getControlDict() const {
+dictionary fvCFDWrapper::getControlDict() const {
     return controlDict;
 }
 
-const nl::json& fvCFDWrapper::getDictionaries() const
+const json& fvCFDWrapper::getDictionaries() const
 {
     return caseDictionaries;
 }

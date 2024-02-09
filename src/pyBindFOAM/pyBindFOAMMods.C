@@ -1,11 +1,11 @@
 # include "patchAverage/patchAverage.H"
+# include "pyBlockMesh/pyBlockMesh.H"
 # include "fvCFDWrapper/fvCFDWrapper.H"
+# include "utils/argumentParser.H"
 // include standard library
 # include <pybind11/pybind11.h>
 # include <pybind11/stl.h>
 # include "fvCFD.H"
-
-namespace py = pybind11;
 
 PYBIND11_MODULE(pyBindFOAMMods, m)
 {
@@ -43,6 +43,10 @@ PYBIND11_MODULE(pyBindFOAMMods, m)
 	    d.add(key, word, overwrite);
 	});
 
+    //py::class_<Foam::IOdictionary>(m, "IOdictionary")
+    //.def(py::init<const Foam::word&>());
+
+
     //bindfvCFDWrapper(m);
     py::class_<fvCFDWrapper>(m, "fvCFDWrapper")
         .def(py::init<const py::dict&>())
@@ -56,22 +60,23 @@ PYBIND11_MODULE(pyBindFOAMMods, m)
 
     //bindPatchAverage(m);
     py::class_<patchAverage>(m, "patchAverage")	
-	.def(py::init<const std::string, const std::string, const fvCFDWrapper&>())
-	.def("calculateAverage", &patchAverage::calculateAverage)
+	.def(py::init<const fvCFDWrapper&>())
+	.def("calculatePatchAverage", &patchAverage::calculateAverage)
 	.def("__repr__", [](const patchAverage& pa) {
 	    std::string ret = "<patchAverage>";
 	    return ret;
 	});
 
-    // bind the standard library string class to python
-    py::class_<std::string>(m, "string")
-	.def(py::init<>())
-	.def(py::init<const char*>())
-	.def("__repr__", [](const std::string& s) {
-	    std::string ret = "<string>";
-	    return ret;
-	});
-    
+    //bindPyBlockMesh(m);
+    py::class_<pyBlockMesh>(m, "blockMesh")
+    .def(py::init<const fvCFDWrapper&>())
+    .def("generateMesh", &pyBlockMesh::generateMesh)
+    .def("__repr__", [](const pyBlockMesh& bm) {
+            std::string ret = "<blockMesh>";
+            return ret;
+    });
+
+
     
     m.attr("__version__") = "0.0.1";
 }

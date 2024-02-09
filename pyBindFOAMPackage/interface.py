@@ -31,6 +31,8 @@ For more information and updates, visit:
 # ------------------------------------------------------------------------------
 # Import the required modules
 from pyBindFOAMPackage import interfaceUtils as iu
+from pyBindFOAMPackage import runFoamExe as foamExe
+import sys
 
 # Define the main function
 def runInterface():
@@ -62,37 +64,55 @@ def runInterface():
     project_dir, dictionaries = iu.import_project()
     iu.print_commands()
 
+    # Initialise arguments, will be passed as a pybind11::object
+    args = sys.argv
+
     while True:
         # Command input
         user_input = input("\n>>> ")
+        user_input = user_input.lower().strip()
 
-        if user_input.lower().strip() == "view" or str(user_input.strip()) ==\
-                "1" or user_input.lower().strip() == "v":
+        if user_input      == "view"  \
+        or str(user_input) == "1"     \
+        or user_input      == "v":
             # View the contents of a specific dictionary
             iu.view_dictionary(dictionaries)
 
-        elif user_input.lower().strip() == "edit" or str(user_input.strip()) ==\
-                "2" or user_input.lower().strip() == "e":
+        elif user_input    == "edit"  \
+        or str(user_input) == "2"     \
+        or user_input      == "e":
             # Edit the contents of a specific dictionary
             dictionaries = iu.edit_dictionary(project_dir, dictionaries)
 
-        elif user_input.lower().strip() == "help" or str(user_input.strip()) ==\
-                "3" or user_input.lower().strip() == "h":
+        elif user_input    == "help"  \
+        or str(user_input) == "3"     \
+        or user_input      == "h":
             # Show available commands
             iu.print_commands()
 
-        elif user_input.lower().strip() == "mesh" or str(user_input.strip()) ==\
-                "4" or user_input.lower().strip() == "m":
-            # Mesh the domain
-            iu.mesh_domain(project_dir, dictionaries)            
+        elif user_input    == "mesh"  \
+        or str(user_input) == "4"     \
+        or user_input      == "m":
+            iu.print_options("mesh")
+            user_input = input("\n>>> ")
+            mesh(project_dir, dictionaries, args, user_input)
 
-        elif user_input.lower().strip() == "solve" or str(user_input.strip()) ==\
-                "5" or user_input.lower().strip() == "s":
-                    print("Solving the case...")
-                    print("Done! This isn't implemented yet, but it will be soon! :)")
+        elif user_input    == "solve" \
+        or str(user_input) == "5"     \
+        or user_input      == "s":
+            print("Solving the case...")
+            print("Done! This isn't implemented yet, but it will be soon! :)")
 
-        elif user_input.lower().strip() == "quit" or str(user_input.strip()) ==\
-                "0" or user_input.lower().strip() == "q":
+        elif user_input    == "post"  \
+        or str(user_input) == "6"     \
+        or user_input      == "p":
+            iu.print_options("postprocess")
+            user_input = input("\n>>> ")
+            postProcess(project_dir, dictionaries, args, user_input)
+
+        elif user_input    == "quit"  \
+        or str(user_input) == "0"     \
+        or user_input      == "q":
             # Quit the interface
             print("Exiting pyBindFOAM interface. Goodbye!")
             break
@@ -103,4 +123,30 @@ def runInterface():
                 exec(user_input)
             except Exception as e:
                 print(f"Error: Unknown command '{user_input}'. Type 'help' for available commands.")
+
+def postProcess(project_dir, dictionaries, args, function):
+
+    if function == "patchAverage"  \
+    or function == "pa"            \
+    or function == "1":
+        foamExe.runPatchAverage(project_dir, dictionaries, args)        
+
+    else:
+        print(f"Error: Unknown post-processing function '{function}'.")
+        iu.print_options("postProcess")
+        user_input = input("\n>>> ")
+        postProcess(project_dir, dictionaries, args, user_input)
+
+def mesh(project_dir, dictionaries, args, function):
+
+    if function == "mesh"  \
+    or function == "m"         \
+    or function == "1":
+        foamExe.runBlockMesh(project_dir, dictionaries, args)
+
+    else:
+        print(f"Error: Unknown meshing function '{function}'.")
+        iu.print_options("mesh")
+        user_input = input("\n>>> ")
+        mesh(project_dir, dictionaries, args, user_input)
 
