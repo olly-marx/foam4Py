@@ -20,12 +20,12 @@ endif()
 
 project(pyBindFOAM)
 
-set(CMAKE_PACKAGE_DIR "pyBindFOAMPackage")
+set(CMAKE_PACKAGE_DIR "openfoam-python")
 
 include_directories("./")
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(json)                                                           
+add_subdirectory(third_party/json)
 message("NLOHMANN_JSON_INCLUDE_INSTALL_DIR: ${NLOHMANN_JSON_INCLUDE_INSTALL_DIR}")
 include_directories(json/include)
 
@@ -43,14 +43,14 @@ if(CMAKE_PYTHON_BINDINGS)
     include_directories(${Python_INCLUDE_DIRS})
     
     message("Adding pybind11")
-    add_subdirectory(pybind11)
+    add_subdirectory(third_party/pybind11)
     include_directories(${PYBIND11_INCLUDE_DIR})
     
     set(pybind11_DIR pybind11)
 
     # Get pybind11_json
-    add_subdirectory(pybind11_json)
-    include_directories(pybind11_json/include)
+    add_subdirectory(third_party/pybind11_json)
+    include_directories(third_party/pybind11_json/include)
 
 endif(CMAKE_PYTHON_BINDINGS)
 
@@ -63,4 +63,4 @@ if(FOAM)
     include(./FOAMConfig.cmake)
 endif()
 
-add_subdirectory(pyBindFOAM)
+add_subdirectory(openfoam_python_api_cpp)

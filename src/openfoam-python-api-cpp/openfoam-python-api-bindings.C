@@ -1,82 +1,43 @@
-# include "patchAverage/patchAverage.H"
-# include "pyBlockMesh/pyBlockMesh.H"
-# include "fvCFDWrapper/fvCFDWrapper.H"
-# include "utils/argumentParser.H"
-// include standard library
-# include <pybind11/pybind11.h>
-# include <pybind11/stl.h>
-# include "fvCFD.H"
+#include "pyPatchAverage/pyPatchAverage.H"
+#include "pyBlockMesh/pyBlockMesh.H"
+#include "fvCFDWrapper/fvCFDWrapper.H"
 
-PYBIND11_MODULE(pyBindFOAMMods, m)
-{
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include "fvCFD.H"
+
+namespace py = pybind11;
+
+PYBIND11_MODULE(openfoam_python_api_bindings, m) {
     m.doc() = R"pbdoc(
-		pyBindFOAMMods module
-		-----------------------
+        openfoam_python_api_bindings
+        ---------------------------
 
-		.. currentmodule:: pyBindFOAMMods
+        This module provides bindings for interacting with OpenFOAM data.
+    )pbdoc";
 
-		.. autosummary::
-		   :toctree: _generate
+    // Define __all__ to specify exported symbols
+    m.attr("__all__") = py::make_tuple("fvCFDWrapper", "pyPatchAverage", "pyBlockMesh");
 
-		   patchAverage
-	)pbdoc";
-
-    // Bind word class to python
-    py::class_<Foam::word>(m, "word")
-    .def(py::init<const char*>())
-    .def("__repr__", [](const Foam::word& w) {
-		std::string ret = "<word>";
-		return ret;
-	});
-
-    // Bind the keyType class to python only bind the add method that
-    py::class_<Foam::keyType>(m, "keyType")
-	.def(py::init<const Foam::word&>());
-
-    // Bind dictionary class to python, only bind the default constructor
-    // and the overloaded add method with the following signature:
-    // Foam::dictionary::add(const keyType&, const word&, bool overwrite = false);
-    py::class_<Foam::dictionary>(m, "dictionary")
-	.def(py::init())
-	.def("add", [](Foam::dictionary& d, const Foam::keyType& key, 
-		    const Foam::word& word, bool overwrite) {
-	    d.add(key, word, overwrite);
-	});
-
-    //py::class_<Foam::IOdictionary>(m, "IOdictionary")
-    //.def(py::init<const Foam::word&>());
-
-
-    //bindfvCFDWrapper(m);
+    // Bind fvCFDWrapper class
     py::class_<fvCFDWrapper>(m, "fvCFDWrapper")
-        .def(py::init<const py::dict&>())
-        .def("getControlDict", &fvCFDWrapper::getControlDict)
-        //.def("setValue", &fvCFDWrapper::setValue)
-        //.def("getValue", &fvCFDWrapper::getValue);
-	.def("__repr__", [](const Foam::word& w) {
-		std::string ret = "<word>";
-		return ret;
-	});
+        .def(py::init<const py::dict&>());
 
-    //bindPatchAverage(m);
-    py::class_<patchAverage>(m, "patchAverage")	
-	.def(py::init<const fvCFDWrapper&>())
-	.def("calculatePatchAverage", &patchAverage::calculateAverage)
-	.def("__repr__", [](const patchAverage& pa) {
-	    std::string ret = "<patchAverage>";
-	    return ret;
-	});
+    // Bind pyPatchAverage class
+    py::class_<pyPatchAverage>(m, "pyPatchAverage")
+        .def(py::init<const fvCFDWrapper&>())
+        .def("runPatchAverage", &pyPatchAverage::runPatchAverage);
 
-    //bindPyBlockMesh(m);
-    py::class_<pyBlockMesh>(m, "blockMesh")
-    .def(py::init<const fvCFDWrapper&>())
-    .def("generateMesh", &pyBlockMesh::generateMesh)
-    .def("__repr__", [](const pyBlockMesh& bm) {
-            std::string ret = "<blockMesh>";
-            return ret;
-    });
+    // Bind pyBlockMesh class
+    py::class_<pyBlockMesh>(m, "pyBlockMesh")
+        .def(py::init<const fvCFDWrapper&>())
+        .def("runBlockMesh", &pyBlockMesh::runBlockMesh);
 
+    // Bind pyIcoFoam class
+    py::class_<pyIcoFoam>(m, "pyIcoFoam")
+        .def(py::init<const fvCFDWrapper&>())
+        .def("runIcoFoam", &pyIcoFoam::runIcoFoam);
 
-    
     m.attr("__version__") = "0.0.1";
 }
+

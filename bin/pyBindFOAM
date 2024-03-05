@@ -2,7 +2,7 @@
 """
 patchAverage.py
 
-A script that demonstrates the usage of the patchAverage module in the pyBindFOAMPackage.
+A script that demonstrates the usage of the patchAverage module in the openfoam-python.
 
 This script calculates the average value of a specified field over a given patch using the
 `patchAverage` module.
@@ -14,7 +14,7 @@ Author:
     Oliver Marx <oliver.j.marx@gmail.com>
 """
 
-from pyBindFOAMPackage import interface
+from openfoam-python import interface
 
 def main():
     interface.runInterface()

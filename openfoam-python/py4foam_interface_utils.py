@@ -28,16 +28,13 @@ For more information and updates, visit:
 
 import os
 import sys
-from pyBindFOAMPackage import importFoamDict as ifd
-from pyBindFOAMPackage import findFoamDicts as ffd
-from pyBindFOAMPackage import interfaceOut as out
-from pyBindFOAMPackage import dictionaryEditor
-from pyBindFOAMPackage import state as s
+from .openfoam_dict_reader import *
+from .openfoam_dict_finder import *
+from .output_interface import *
+from .dictionary_editor import *
+from .state import *
 
-# Function to handle tab completion
-def complete(text, state):
-    options = [key for key in state.locals.keys() if key.startswith(text)]
-    return options[state] if state < len(options) else None
+__all__ = ["import_project", "list", "view", "edit_dict_selected", "solve", "autocompletes"]
 
 def import_project():
     """

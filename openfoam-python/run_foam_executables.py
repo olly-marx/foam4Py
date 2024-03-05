@@ -1,8 +1,5 @@
-from pyBindFOAMPackage import fvCFDWrapper
-from pyBindFOAMPackage import blockMesh
-from pyBindFOAMPackage import patchAverage
-from pyBindFOAMPackage import findFoamDicts
 import os
+from openfoam-python-api-cpp import *
 
 def runBlockMesh(project_dir, dictionaries, args):
     # Run the meshing utility blockMesh

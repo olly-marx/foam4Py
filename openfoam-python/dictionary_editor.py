@@ -2,9 +2,11 @@ import json
 import os
 from datetime import datetime
 
+__all__ = ["DictionaryEditor"]
+
 class DictionaryEditor:
     """
-    A class for editing dictionaries in the pyBindFOAM interface.
+    A class for editing dictionaries in the py4Foam interface.
     
     Attributes:
         project_dir (str): The directory of the OpenFOAM project.
@@ -147,5 +149,39 @@ class DictionaryEditor:
                 value = self.latest_version[timestamp]["value"]
 
                 keystring = "dictionaries"
-                keystring += f"[\'{dict_name
+                keystring += f"[\'{dict_name}\']"
+                for key in keys:
+                    if key.isdigit():
+                        keystring += f"[{key}]"
+                    else:
+                        keystring += f"[\'{key}\']"
+
+                edit = f"{keystring} = {value}"
+                exec(edit, globals(), locals())
+
+        return dictionaries
+
+    def are_you_sure(self, action):
+        if self.edit_history == {}:
+            return True
+
+        check = input("Are you sure you want to " + action + "? (y/n): ").strip().lower()
+        if check == "y":
+            self.save_changes()
+            return True
+        elif check == "n":
+            return False
+        else:
+            self.are_you_sure(action)
+
+    def save_changes(self):
+        check = input("Save changes? (y/n): ").strip().lower()
+        if check == "y":
+            self.save_edits()
+            return True
+        elif check == "n":
+            return False
+        else:
+            self.save_changes()
+
 

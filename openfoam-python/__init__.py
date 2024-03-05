@@ -1,10 +1,31 @@
-from . pyBindFOAMMods import *
+# __init__.py
 
-import os
+"""
+py4Foam Interface Package
+
+A package containing scripts and modules for the pyBindFOAM interface.
+
+Author: Oliver Marx
+Email: oliver.j.marx@gmail.com
+
+Description:
+    This package contains various scripts and modules used by the pyBindFOAM interface.
+    It includes functionality for importing OpenFOAM dictionaries, editing dictionaries,
+    running meshing and post-processing utilities, and more.
+
+Dependencies:
+    - Python 3.5+
+    - pybind11
+    - foam-extend 5.0
+
+"""
+
+# Import necessary modules and scripts
+from .py4foam_interface import InterfaceState
 from . _version import __version__
 
-def get_includes():
-    return os.path.dirname(__file__) + "/include/"
+# List of scripts and modules to be imported when using "from pyBindFOAMPackage import *"
+__all__ = [
+    'InterfaceState',
+]
 
-def get_lib_dir():
-    return os.path.dirname(__file__) + "/lib/"

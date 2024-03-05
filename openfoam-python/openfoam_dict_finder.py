@@ -1,5 +1,5 @@
 """
-findFoamDicts.py
+OpenFOAM Dictionary Finder
 
 A script that contains a function to find all the Foam dictionary files in a given directory.
 
@@ -26,6 +26,8 @@ For more information and updates, visit:
 
 import os
 import linecache
+
+__all__ = ["find_dictionary_files"]
 
 def is_nonuniform(file_path):
     """

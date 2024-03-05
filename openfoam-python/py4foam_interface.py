@@ -32,11 +32,11 @@ For more information and updates, visit:
 import sys
 import code
 import readline
-from pyBindFOAMPackage import interfaceUtils as iu
-from pyBindFOAMPackage import interfaceOut as out
-from pyBindFOAMPackage import runFoamExe as foamExe
-from pyBindFOAMPackage import state as s
-from pyBindFOAMPackage import dictionaryEditor
+from .py4foam_interface_utils import *
+from .run_foam_executables import *
+from .output_interface import *
+from .dictionary_editor import *
+from .state import *
 
 #*******************************************************************************
 #                                INTERFACE s.STATE
@@ -73,7 +73,7 @@ class InterfaceState(code.InteractiveInterpreter):
         self.args = sys.argv
         self.state = s.STATE.HOME
         self.state_stack = [self.state]
-        self.editor = dictionaryEditor.DictionaryEditor(self.project_dir)
+        self.editor = DictionaryEditor(self.project_dir)
         self.editing_dictionary = None
         out.print_help(self)
 

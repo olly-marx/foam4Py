@@ -12,7 +12,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 import re
-VERSIONFILE="pyBindFOAMPackage/_version.py"
+VERSIONFILE="openfoam-python/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -49,7 +49,7 @@ setup(
     author=['Oliver Marx'],
     author_email='oliver.j.marx@gmail.com',
     description='A version of OpenFOAM with a python interface',
-    packages=['pyBindFOAMPackage', 'src/pybind11'],
+    packages=['openfoam-python', 'src/pybind11'],
     scripts=['bin/patchAverage', 'bin/pyBindFOAM'],
     #install_requires=[
     #    "numpy",
