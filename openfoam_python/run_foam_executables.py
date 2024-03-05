@@ -1,5 +1,5 @@
 import os
-from openfoam-python-api-cpp import *
+from openfoam_python_api_cpp import *
 
 def runBlockMesh(project_dir, dictionaries, args):
     # Run the meshing utility blockMesh

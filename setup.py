@@ -12,7 +12,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 import re
-VERSIONFILE="openfoam-python/_version.py"
+VERSIONFILE="openfoam_python/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -31,7 +31,7 @@ if 'MAKEFLAGS' not in os.environ:
 pybind_value='ON'
 
 setup(
-    name="pyBindFOAM",
+    name="py4Foam",
     version=verstr,
     cmake_source_dir='src/',
     include_package_data=True,
@@ -49,7 +49,7 @@ setup(
     author=['Oliver Marx'],
     author_email='oliver.j.marx@gmail.com',
     description='A version of OpenFOAM with a python interface',
-    packages=['openfoam-python', 'src/pybind11'],
+    packages=['openfoam_python', 'src/pybind11'],
     scripts=['bin/patchAverage', 'bin/pyBindFOAM'],
     #install_requires=[
     #    "numpy",

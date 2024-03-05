@@ -20,7 +20,7 @@ endif()
 
 project(pyBindFOAM)
 
-set(CMAKE_PACKAGE_DIR "openfoam-python")
+set(CMAKE_PACKAGE_DIR "openfoam_python")
 
 include_directories("./")
 
