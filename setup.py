@@ -50,8 +50,8 @@ setup(
     ],
     author=['Oliver Marx'],
     author_email='oliver.j.marx@gmail.com',
-    description='A package that allows the user to use OpenFOAM in Python',
-    packages=['src/foam4Py_cpp'],
+    description='OpenFOAM CFD Library with python bindings, to allow for easy access to OpenFOAM functionality from python',
+    packages=['foam4Py'],
     install_requires=[
         "numpy",
         "scikit-build",

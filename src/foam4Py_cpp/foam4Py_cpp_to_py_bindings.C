@@ -7,9 +7,9 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(openfoam_python_api_bindings, m) {
+PYBIND11_MODULE(foam4Py_module, m) {
     m.doc() = R"pbdoc(
-        openfoam_python_api_bindings
+        py4Foam_module
         ---------------------------
 
         This module provides bindings for interacting with OpenFOAM data.

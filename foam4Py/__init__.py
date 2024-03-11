@@ -23,7 +23,7 @@ Dependencies:
 """
 
 # Import necessary modules and scripts
-from foam4Py import *
+from foam4Py_module import *
 from . _version import __version__
 
 __all__ = [

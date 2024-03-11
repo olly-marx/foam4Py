@@ -27,13 +27,18 @@ target_link_libraries(foam4Py_cpp ${FOAM_LIBRARIES})
 target_link_libraries(foam4Py_cpp ${Python_LIBRARIES})
 target_link_libraries(foam4Py_cpp nlohmann_json::nlohmann_json)
 
-pybind11_add_module(foam4Py_py SHARED foam4Py_cpp_to_py_bindings.C)
-target_link_libraries(foam4Py_py PRIVATE foam4Py_cpp)
+pybind11_add_module(foam4Py_module SHARED foam4Py_cpp_to_py_bindings.C)
+target_link_libraries(foam4Py_module PRIVATE foam4Py_cpp)
 
 # Install the library
 install(TARGETS foam4Py_cpp
         LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}/lib
         ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}/lib
+        #RUNTIME DESTINATION ${CMAKE_PACKAGE_DIR}/bin
         INCLUDES DESTINATION ${CMAKE_PACKAGE_DIR}/include
         )
 
+install(TARGETS foam4Py_module
+        LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}
+        ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}
+        )

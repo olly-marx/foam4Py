@@ -27,15 +27,8 @@ include_directories(third_party/pybind11_json/include)
 # Add FOAM libraries
 include(./FOAMConfig.cmake)
 
-if(CMAKE_PYTHON_BINDINGS)
-    find_package(Python ${CMAKE_PYVERSION} REQUIRED COMPONENTS Interpreter Development)
-    include_directories(${Python_INCLUDE_DIRS})
-    add_subdirectory(foam4Py_cpp)
-
-    message("PACKAGE_DIR: ${CMAKE_PACKAGE_DIR}")
-    install(TARGETS foam4Py_py
-            LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}
-            ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}
-            INCLUDES DESTINATION ${CMAKE_PACKAGE_DIR}/include)
-endif()
+# Build the C++ library
+find_package(Python ${CMAKE_PYVERSION} REQUIRED COMPONENTS Interpreter Development)
+include_directories(${Python_INCLUDE_DIRS})
+add_subdirectory(foam4Py_cpp)
 
