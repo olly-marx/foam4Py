@@ -10,7 +10,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 # Get version from _version.py file
-VERSIONFILE = "foam4Py/_version.py"
+VERSIONFILE = "openfoam_interface/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -43,6 +43,9 @@ setup(
         "numpy",
         "scikit-build",
         "cmake",
+    ],
+    scripts=[
+        "bin/openfoam_interface",
     ],
     python_requires='>=3.6',
     classifiers=[

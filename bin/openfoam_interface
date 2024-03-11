@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+"""
+An entry point for the openfoam_interface package.
+
+This script is used to run the openfoam_interface package. It is the main entry.
+
+.. moduleauthor:: Oliver Marx <
+
+.. module:: openfoam_interface
+
+Author:
+    Oliver Marx <oliver.j.marx@gmail.com>
+"""
+
+from openfoam_interface import *
+
+def main():
+    interface = InterfaceState()
+    interface.run_interface()
+
+if __name__ == "__main__":
+    main()

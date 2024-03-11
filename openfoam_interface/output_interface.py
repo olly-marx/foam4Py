@@ -84,7 +84,7 @@ def print_help(state):
         [.][home]      - Return to home.
         """
     elif state.state == STATE.VIEW:
-        dicts = state.dictionariekeys()
+        dicts = state.dictionaries.keys()
         commands = "Available dictionaries: " + str(dicts) + "\n"
 
     elif state.state == STATE.SELECTING_DICT:
@@ -141,17 +141,17 @@ def print_list(state):
     list_output = ""
     if state.state == STATE.HOME:
         list_output += "\nOpenFOAM project dictionaries:\n"
-        for key in state.dictionariekeys():
+        for key in state.dictionaries.keys():
             list_output += f"- {key}\n"
 
     elif state.state == STATE.VIEW:
         list_output +="\nAvailable dictionaries to view:\n"
-        for key in state.dictionariekeys():
+        for key in state.dictionaries.keys():
             list_output += f"- {key}\n"
 
     elif state.state == STATE.SELECTING_DICT:
         list_output += "\nAvailable dictionaries to edit:\n"
-        for key in state.dictionariekeys():
+        for key in state.dictionaries.keys():
             list_output += f"- {key}\n"
 
     elif state.state == STATE.EDITING_DICT:
