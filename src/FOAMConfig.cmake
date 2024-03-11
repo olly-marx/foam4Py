@@ -40,6 +40,7 @@ file(GLOB FOAM_INCLUDE_DIRS "${FOAM_SRC}/*/lnInclude")
 
 # now include all of the directories
 include_directories(${FOAM_INCLUDE_DIRS})
+message(STATUS "foam-extend-5.0: include dir='${FOAM_INCLUDE_DIRS}'")
 include_directories(${FOAM_SRC}/OSspecific/POSIX)
 include_directories(${FOAM_SRC}/OSspecific/POSIX/lnInclude)
 include_directories(${FOAM_SRC}/mesh/blockMesh/lnInclude)

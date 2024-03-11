@@ -1,0 +1,4 @@
+add_subdirectory(pyIcoFoam)
+set(OBJECTS ${OBJECTS} PARENT_SCOPE)
+set(INCLUDES ${INCLUDES} PARENT_SCOPE)
+

@@ -12,7 +12,7 @@ with io.open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 import re
-VERSIONFILE="openfoam_python/_version.py"
+VERSIONFILE="foam4Py/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -29,9 +29,10 @@ if 'MAKEFLAGS' not in os.environ:
     os.environ['MAKEFLAGS'] = "-j 1"
 
 pybind_value='ON'
+os.environ['CMAKE_EXPORT_COMPILE_COMMANDS'] = 'ON'
 
 setup(
-    name="py4Foam",
+    name="foam4Py",
     version=verstr,
     cmake_source_dir='src/',
     include_package_data=True,
@@ -44,18 +45,18 @@ setup(
         # '-DMPI_C_COMPILER={}'.format(mpicc),
         #'-DMPI:BOOL={}'.format(mpi_value),
         #'-DOPENMP:BOOL={}'.format(openmp_value),
-        f'-DCMAKE_PYVERSION={py_version}'
+        f'-DCMAKE_PYVERSION={py_version}',
+        '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
     ],
     author=['Oliver Marx'],
     author_email='oliver.j.marx@gmail.com',
-    description='A version of OpenFOAM with a python interface',
-    packages=['openfoam_python', 'src/pybind11'],
-    scripts=['bin/patchAverage', 'bin/pyBindFOAM'],
-    #install_requires=[
-    #    "numpy",
-    #    "scikit-build",
-    #    "cmake",
-    #],
+    description='A package that allows the user to use OpenFOAM in Python',
+    packages=['src/foam4Py_cpp'],
+    install_requires=[
+        "numpy",
+        "scikit-build",
+        "cmake",
+    ],
     long_description=long_description,
     long_description_content_type='text/markdown',
 )

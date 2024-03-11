@@ -1,66 +1,41 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
+# Project name
+project(foam4Py)
+
+set(CMAKE_PACKAGE_DIR "foam4Py")
+
+# Set CMake variables
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
 set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Check if MPI is set
-if(NOT DEFINED MPI)
-	set(MPI False)
-endif()
+# Include directories
+include_directories(${CMAKE_SOURCE_DIR}/foam4Py_cpp/include)
 
-if(MPI)
-    set(MPI_ASSUME_NO_BUILTIN_MPI True)
-    find_package(MPI REQUIRED COMPONENTS C CXX)
-    include_directories(MPI_C_INCLUDE_DIRECTORIES)
-    include_directories(MPI_CXX_INCLUDE_DIRECTORIES)
-    #add_definitions(-DLARCV_MPI)
-endif()
-
-project(pyBindFOAM)
-
-set(CMAKE_PACKAGE_DIR "openfoam_python")
-
-include_directories("./")
-
+# Add third-party libraries
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(third_party/json)
-message("NLOHMANN_JSON_INCLUDE_INSTALL_DIR: ${NLOHMANN_JSON_INCLUDE_INSTALL_DIR}")
-include_directories(json/include)
+include_directories(third_party/json/include)
+add_subdirectory(third_party/pybind11)
+include_directories(third_party/pybind11/include)
+add_subdirectory(third_party/pybind11_json)
+include_directories(third_party/pybind11_json/include)
 
-# Check if CMAKE_PYTHON_BINDINGS is set
-if(NOT DEFINED CMAKE_PYTHON_BINDINGS)
-	set(CMAKE_PYTHON_BINDINGS True)
-endif()
+# Add FOAM libraries
+include(./FOAMConfig.cmake)
 
 if(CMAKE_PYTHON_BINDINGS)
-
-    message("Adding python bindings")
-    
-    # Many packages need python:
-    find_package(Python ${CMAKE_PYVERSION} REQUIRED COMPONENTS  Interpreter Development)
+    find_package(Python ${CMAKE_PYVERSION} REQUIRED COMPONENTS Interpreter Development)
     include_directories(${Python_INCLUDE_DIRS})
-    
-    message("Adding pybind11")
-    add_subdirectory(third_party/pybind11)
-    include_directories(${PYBIND11_INCLUDE_DIR})
-    
-    set(pybind11_DIR pybind11)
+    add_subdirectory(foam4Py_cpp)
 
-    # Get pybind11_json
-    add_subdirectory(third_party/pybind11_json)
-    include_directories(third_party/pybind11_json/include)
-
-endif(CMAKE_PYTHON_BINDINGS)
-
-# Check in FOAM is set if not set it to TRUE
-if(NOT DEFINED FOAM)
-	set(FOAM True)
+    message("PACKAGE_DIR: ${CMAKE_PACKAGE_DIR}")
+    install(TARGETS foam4Py_py
+            LIBRARY DESTINATION ${CMAKE_PACKAGE_DIR}
+            ARCHIVE DESTINATION ${CMAKE_PACKAGE_DIR}
+            INCLUDES DESTINATION ${CMAKE_PACKAGE_DIR}/include)
 endif()
 
-if(FOAM)
-    include(./FOAMConfig.cmake)
-endif()
-
-add_subdirectory(openfoam_python_api_cpp)
