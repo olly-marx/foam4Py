@@ -33,7 +33,7 @@ void pyPatchAverage::runPatchAverage(pybind11::object pyargv11)
     const fileName rootPath = ".";
     const fileName caseName = ".";
 
-    dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
+    dictionary controlDict = utils::importDictionary(foamCase_, "system/controlDict");
 
     Info << "controlDict has been init to "<< controlDict << endl;
 

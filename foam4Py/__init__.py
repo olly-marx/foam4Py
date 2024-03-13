@@ -23,9 +23,12 @@ Dependencies:
 """
 
 # Import necessary modules and scripts
-from foam4Py_module import *
+from .foam4Py_module import *
 from . _version import __version__
 
-__all__ = [
-]
+# Define __all__ variable from imported modules
+foam4Py_module_all_strings = [str(item) for item in foam4Py_module.__all__]
+
+# Define __all__ variable from imported modules
+__all__ = foam4Py_module_all_strings
 

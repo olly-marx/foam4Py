@@ -27,7 +27,7 @@ CMakeFiles
 *.cmake
 Makefile
 make.bat
-pyBindFOAM.egg-info/
+foam4Py.egg-info/
 *.cache/
 
 # Ignore OpenFOAM generated data folders

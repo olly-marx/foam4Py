@@ -62,7 +62,7 @@ void pyBlockMesh::runBlockMesh(py::object pyargv11)
     const fileName rootPath = ".";
     const fileName caseName = ".";
 
-    dictionary controlDict = utils::importDictionary(foamCase_, "controlDict");
+    dictionary controlDict = utils::importDictionary(foamCase_, "system/controlDict");
 
     Time runTime(controlDict, rootPath, caseName,
             word("system"), word("constant"), false);
@@ -81,7 +81,7 @@ void pyBlockMesh::runBlockMesh(py::object pyargv11)
 
     // Locate appropriate blockMeshDict
     //#include "findBlockMeshDict.H"
-    dictionary blockMeshDict = utils::importDictionary(foamCase_, "blockMeshDict");
+    dictionary blockMeshDict = utils::importDictionary(foamCase_, "system/blockMeshDict");
 
     const IOdictionary meshDict(
         IOobject

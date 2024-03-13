@@ -1,43 +1,77 @@
 #include "formatJSONforFoam.H"
 
-Foam::word utils::JSONforFoam(nl::json& obj, const nl::json::value_t& valueType, bool NESTED)
+void utils::JSONforFoam(const std::string& key, json& value, std::ostringstream& os, int indent)
 {
-    std::string result = "";
+    std::string indentation(indent, ' ');
 
-    if(valueType==nl::json::value_t::array)
+    if (key == "")
     {
-        result += "(";
-        for(nl::json::iterator it = obj.begin(); it != obj.end(); ++it)
+        if(value.is_object())
         {
-            result += JSONforFoam(it.value(), it.value().type(), true);
-            if(it != obj.end()-1)
+            for(json::iterator it = value.begin(); it != value.end(); ++it)
             {
-                result += " ";
+                JSONforFoam(it.key(), it.value(), os, indent+4);
             }
         }
-        result += ")";
-    }
-    else if(valueType==nl::json::value_t::object)
-    {
-        result += "{";
-        for(nl::json::iterator it = obj.begin(); it != obj.end(); ++it)
+        else if(value.is_array())
         {
-            result += JSONforFoam(it.value(), it.value().type());
-            if(it != obj.end()-1)
+            os << indentation << "( ";
+            for(json::iterator it = value.begin(); it != value.end(); ++it)
             {
-                result += " ";
+                if(it.value().is_number())
+                {
+                    os << it.value() << " ";
+                }
+                else
+                {
+                    os << "\n" << indentation << it.value();
+                }
             }
+            os << " )" <<"\n";
         }
-        result += "}";
-    }
-    else if(valueType==nl::json::value_t::string)
-    {
-        result += obj.dump();
-        result.erase(std::remove(result.begin(), result.end(), '\"'), result.end());
+        else if (value.is_string())
+        {
+            // Remove the quotes from the string
+            std::string valueStr = value.dump();
+            valueStr.erase(std::remove(valueStr.begin(), valueStr.end(), '\"'), valueStr.end());
+            os << valueStr << "\n";
+        }
+        else if (value.is_number())
+        {
+            os << value << " ";
+        }
+
     }
     else
     {
-        result += obj.dump();
+        os << indentation << key << " ";
+        if(value.is_object())
+        {
+            os << "\n" << indentation << "{" << "\n";
+            for(json::iterator it = value.begin(); it != value.end(); ++it)
+            {
+                JSONforFoam(it.key(), it.value(), os, indent+4);
+            }
+            os << indentation << "}" << "\n" << "\n";
+        }
+        else if(value.is_array())
+        {
+            os << "\n" << indentation << "(" << "\n";
+            for(json::iterator it = value.begin(); it != value.end(); ++it)
+            {
+                JSONforFoam("", it.value(), os, indent+4);
+            }
+            os << indentation << ");" <<"\n";
+        }
+        else if (value.is_string())
+        {
+            std::string valueStr = value.dump();
+            valueStr.erase(std::remove(valueStr.begin(), valueStr.end(), '\"'), valueStr.end());
+            os << valueStr << ";" << "\n";
+        }
+        else if (value.is_number())
+        {
+            os << value << ";" << "\n";
+        }
     }
-    return result;
 }

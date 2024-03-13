@@ -32,10 +32,9 @@ PYBIND11_MODULE(foam4Py_module, m) {
         .def(py::init<const fvCFDWrapper&>())
         .def("runBlockMesh", &pyBlockMesh::runBlockMesh);
 
-    //// Bind pyIcoFoam class
-    //py::class_<pyIcoFoam>(m, "pyIcoFoam")
-    //    .def(py::init<const fvCFDWrapper&>())
-    //    .def("runIcoFoam", &pyIcoFoam::runIcoFoam);
+    py::class_<dictionary>(m, "dictionary")
+        .def(py::init<const dictionary&>());
+        //.def("runIcoFoam", &dictionary::runIcoFoam);
 
     m.attr("__version__") = "0.0.1";
 }

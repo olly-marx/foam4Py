@@ -1,10 +1,10 @@
 #include "fvCFD.H"
 #include <nlohmann/json.hpp>
 
-namespace nl = nlohmann;
+using json = nlohmann::json;
 
 namespace utils
 {
-    Foam::word JSONforFoam(nl::json& obj, const nl::json::value_t& valueType, bool NESTED=false);
+    void JSONforFoam(const std::string& key, json& value, std::ostringstream& os, int indent=0);
 }
 
