@@ -1,9 +1,6 @@
 
 ### openfoam_interface
 
-```markdown
-# openfoam_interface
-
 [![Tests](https://github.com/olly-marx/openfoam_interface)](https://github.com/olly-marx/openfoam_interface/)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://raw.githubusercontent.com/olly-marx/openfoam_interface/LICENSE)
 

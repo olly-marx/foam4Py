@@ -1,5 +1,7 @@
 import os
-from foam4Py import *
+from foam4Py import fvCFDWrapper
+from foam4Py import pyBlockMesh
+from foam4Py import pyPatchAverage
 from .openfoam_dict_finder import *
 
 def runBlockMesh(project_dir, dictionaries, args):
@@ -7,12 +9,12 @@ def runBlockMesh(project_dir, dictionaries, args):
     fvCFD = fvCFDWrapper(dictionaries)
 
     # Run blockMesh
-    blockMeshInstance = blockMesh(fvCFD)
+    blockMeshInstance = pyBlockMesh(fvCFD)
     # create argc and argv in the C style to be passed to generateMesh
     
     print("args: ", args)
 
-    blockMeshInstance.generateMesh(args)
+    blockMeshInstance.runBlockMesh(args)
 
 def runPatchAverage(project_dir, dictionaries, args):
 
@@ -36,5 +38,5 @@ def runPatchAverage(project_dir, dictionaries, args):
     args.append(field)
     args.append(patch)
 
-    patchAverageInstance.calculatePatchAverage(args)
+    patchAverageInstance.runPatchAverage(args)
 

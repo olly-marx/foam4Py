@@ -1,7 +1,8 @@
 """
-pyBindFOAM
 
-This script/module is part of the pyBindFOAM project, which provides a Python
+foam4Py
+
+This script/module is part of the foam4Py project, which provides a Python
 interface to OpenFOAM C++. It uses the pybind11 library to generate
 bindings to the OpenFOAM C++ API.
 
@@ -119,6 +120,15 @@ class InterfaceState(code.InteractiveInterpreter):
 
         self.populate_DICT_AUTOCOMPLETE()
 
+    def run_interface(self):
+        """
+        Run the interface.
+        """
+        # Tab completion
+        readline.set_completer(self.completer)
+        readline.parse_and_bind("tab: complete")
+        self.interact(banner=None, exitmsg="Exiting pyBindFOAM interface. Goodbye!")
+
     def interact(self, banner=None, exitmsg=None):
         """
         Start the interactive interface.
@@ -165,11 +175,15 @@ class InterfaceState(code.InteractiveInterpreter):
             if exitmsg:
                 print(exitmsg)
 
-    def run_interface(self):
+    def completer(self, text, state):
         """
-        Run the interface.
+            Tab completion function.
         """
-        self.interact(banner=None, exitmsg="Exiting pyBindFOAM interface. Goodbye!")
+        options = [i for i in self.locals if i.startswith(text)]
+        if state < len(options):
+            return options[state]
+        else:
+            return None
 
     #*******************************************************************************
     #                         MODE CHANGE COMMANDS
@@ -215,7 +229,7 @@ class InterfaceState(code.InteractiveInterpreter):
         Switch to MESH mode.
         """
         if self.check_valid_command("mesh"):
-            self.change_state(s.STATE.MESH)
+            self.change_state(STATE.MESH)
             print_help(self)
 
     def postprocessing_mode(self):
@@ -223,7 +237,7 @@ class InterfaceState(code.InteractiveInterpreter):
         Switch to POST mode.
         """
         if self.check_valid_command("post"):
-            self.change_state(s.STATE.POST)
+            self.change_state(STATE.POST)
             print_help(self)
 
     def home(self):

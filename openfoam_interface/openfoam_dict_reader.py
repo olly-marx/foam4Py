@@ -29,6 +29,47 @@ import json
 
 __all__ = ["read_openfoam_dictionary"]
 
+# Define a hex object class
+class Hex:
+    #hex (0 1 2 3 4 5 6 7) (20 20 1) simpleGrading (1 1 1)
+    def __init__(self, string):
+
+        self.vertices = []
+        self.dimensions = []
+        self.gradingType = ""
+        self.grading = []
+
+        string = string.strip("hex ")
+        # add a space after ( and before )
+        string = string.replace("(", "( ").replace(")", " )")
+        inArray = False
+        stage = 0
+        # loop over each character in the string
+        for char in string.split():
+            if char.startswith("("):
+                inArray = True
+                stage += 1
+            elif char.endswith(")"):
+                inArray = False
+            else:
+                if inArray:
+                    if stage == 1:
+                        self.vertices.append(int(char))
+                    elif stage == 2:
+                        self.dimensions.append(int(char))
+                    elif stage == 3:
+                        self.grading.append(int(char))
+                elif not inArray and char.isalpha():
+                    self.gradingType += char
+
+    def __repr__(self):
+        return f"hex ({self.vertices})"
+
+    def __str__(self):
+        out = f"hex {self.vertices} {self.dimensions} {self.gradingType} {self.grading}"
+        out = out.replace("[", "(").replace("]", ")").replace(",", "")
+        return out
+
 def read_openfoam_dictionary(file_path):
     """
     Read an OpenFOAM dictionary file and return a nested dictionary representation.
@@ -99,7 +140,7 @@ def read_openfoam_dictionary(file_path):
                         pass
                 result_list.append(value)
             elif line.startswith("hex"):
-                result_list.append(line)
+                result_list.append(Hex(line).__str__())
             else:
                 result_list += line.split()
         return result_list, line_number
