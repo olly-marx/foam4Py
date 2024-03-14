@@ -40,6 +40,7 @@ setup(
         '-DCMAKE_PYTHON_BINDINGS={}'.format(pybind_value),
         '-DFOAM:BOOL={}'.format('ON'),
         '-DCMAKE_CXX_COMPILER={}'.format('/usr/bin/g++'),
+        '-DDOXYGEN_BUILD:BOOL={}'.format('ON'),
         #'-DCMAKE_BUILD_TYPE={}'.format('Release'),
         # '-DMPI_CXX_COMPILER={}'.format(mpicxx),
         # '-DMPI_C_COMPILER={}'.format(mpicc),
