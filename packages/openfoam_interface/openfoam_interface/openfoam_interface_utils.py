@@ -34,7 +34,7 @@ from .output_interface import *
 from .dictionary_editor import *
 from .state import *
 
-__all__ = ["import_project", "list", "view", "edit_dict_selected", "solve", "autocompletes"]
+__all__ = ["import_project", "view", "edit_dict_selected", "solve", "autocompletes"]
 
 def import_project():
     """
@@ -87,15 +87,6 @@ def import_project():
     editor.import_history(dictionaries)
 
     return project_dir, dictionaries
-
-def list(state):
-    """
-    Print a list of available dictionaries.
-
-    Args:
-        state (InterfaceState): The current state of the interface.
-    """
-    print_list(state)
 
 def view(state):
     """

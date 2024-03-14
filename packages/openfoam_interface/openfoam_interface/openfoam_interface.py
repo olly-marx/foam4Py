@@ -365,13 +365,6 @@ class InterfaceState(code.InteractiveInterpreter):
         self.locals.update(autocompletes(self))
         print(self.get_state_string())
 
-    def populate_DICT_AUTOCOMPLETE(self):
-        """
-        Populate dictionary autocomplete.
-        """
-        for key in self.dictionaries.keys():
-            self.DICT_AUTOCOMPLETE[key] = f"{key}"
-
     def check_valid_command(self, command):
         """
         Check if command is valid in the current state.
@@ -426,4 +419,63 @@ class InterfaceState(code.InteractiveInterpreter):
 
         return state_string
 
+#*******************************************************************************
+#                           PREFILL FUNCTIONS
+#*******************************************************************************
+    def populate_EDITING_COMMANDS(self, dictionary, keys, EDITING_COMMANDS):
+        """
+        Populate the EDITING_COMMANDS dictionary with commands for editing dictionaries.
+        Will be used for tab completion and prefilling when editing specific keys in a dictionary.
+        """
+        print("Entering populate_EDITING_COMMANDS function...")
+        for key, value in dictionary.items():
+            print(f"Key: {key}, Value: {value}")
+            if isinstance(value, dict):
+                keys.append(key)
+                EDITING_COMMANDS = self.populate_EDITING_COMMANDS(dictionary[key], keys, EDITING_COMMANDS)
+                keys.pop()
+            elif isinstance(value, list):
+                keys.append(key)
+                value = ""
+                for i in range(len(dictionary[key])):
+                    if type(dictionary[key][i]) == dict:
+                        EDITING_COMMANDS = self.populate_EDITING_COMMANDS(dictionary[key][i], keys, EDITING_COMMANDS)
+                    else:
+                        keystring = ""
+                        for k in keys:
+                            keystring += str(k) + "."
+                        keystring += f"{i}"
+                        keys.append(i)
+                        if type(dictionary[key][i]) == str:
+                            value = f"\"{dictionary[key][i]}\""
+                        else:
+                            value = f"{dictionary[key][i]}"
+                        keys.pop()
+                        EDITING_COMMANDS[keystring] = f"{keystring} = {value}"
+                keys.pop()
+            else:
+                keystring = ""
+                for k in keys:
+                    keystring += str(k) + "."
+                keystring += key
+                value = ""
+                if type(dictionary[key]) == str:
+                    value = f"\"{dictionary[key]}\""
+                else:
+                    value = f"{dictionary[key]}"
+                EDITING_COMMANDS[keystring] = f"{keystring} = {value}"
+            keystring = ""
+            for k in keys:
+                keystring += str(k) + "."
+            keystring = keystring[:-1]
+            value = f"{dictionary[key]}"
+            EDITING_COMMANDS[keystring] = f"{keystring} = {value}"
+        return EDITING_COMMANDS
+
+    def populate_DICT_AUTOCOMPLETE(self):
+        """
+        Populate dictionary autocomplete, used for tab completion of dictionaries.
+        """
+        for key in self.dictionaries.keys():
+            self.DICT_AUTOCOMPLETE[key] = f"{key}"
 
